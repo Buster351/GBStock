@@ -16,4 +16,8 @@
   { TextArea1 TextArea
     MoveScaled(2,16,53,34)
   }
+  { Button3 Button
+    MoveScaled(54,58,8,4)
+    Text = ("Close")
+  }
 }

@@ -25,31 +25,28 @@
     Delay = 30000
   }
   { Label1 Label
-    MoveScaled(19,2,11,4)
+    MoveScaled(31,2,11,4)
     Font = Font["+2"]
     Text = ("Category")
   }
   { ComboBox1 ComboBox
-    MoveScaled(31,2,29,4)
+    MoveScaled(44,2,37,4)
     Font = Font["+2"]
   }
   { Label2 Label
-    MoveScaled(3,2,10,3)
+    MoveScaled(20,2,10,4)
     Font = Font["+2"]
     Text = ("Search")
   }
-  { TimeBox1 TimeBox
-    MoveScaled(153,1,31,5)
-  }
   { TextBox1 TextBox
-    MoveScaled(77,2,68,4)
+    MoveScaled(116,2,68,4)
   }
   { Label3 Label
-    MoveScaled(61,2,16,4)
+    MoveScaled(102,2,12,4)
     Text = ("Description")
   }
   { Button3 Button
-    MoveScaled(3,19,13,5)
+    MoveScaled(2,19,14,4)
     Text = ("Category")
   }
 }

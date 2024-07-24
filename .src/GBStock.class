@@ -165,5 +165,5 @@ End
 Public Sub Button3_Click()
 
   Add_Category.ShowModal
-
+  Global.Get_Types(ComboBox1)
 End

@@ -15,3 +15,19 @@ Dim res As Result
   Next
 
 End
+
+Public Sub Button1_Click()
+Dim res As Result
+  
+  res = Global.DBconn.Create("types")
+  res!type = Textbox1.Text
+  res.Update  
+  Global.DBconn.Commit
+  
+End
+
+Public Sub Button3_Click()
+
+  Me.Close
+
+End
