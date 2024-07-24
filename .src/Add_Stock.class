@@ -9,7 +9,7 @@ End
 Public Sub btnOK_Click()
 Dim res As Result
 
-res = GBStock.StockDB.Create("stock")
+res = Global.DBconn.Create("stock")
 res!type = ComboBox1.Current.Text
 res!man = TextBox1.Text
 res!descrip = TextBox2.Text
@@ -20,7 +20,7 @@ res!reserve = ValueBox4.Value
 res!editdate = Now
 res!image = PictureBox1.Picture.ToString("png", 100)
 res.Update
-GBStock.StockDB.Commit()
+Global.DBconn.Commit()
 
   Me.Close(True)
 
@@ -42,7 +42,7 @@ End
 
 Public Sub FillComboBox()
   Dim res As Result
-  res = GBStock.StockDB.Find("types")
+  res = Global.DBconn.Find("types")
   ComboBox1.Clear
   For Each res
     ComboBox1.Add(res!type)

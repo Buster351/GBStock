@@ -4,7 +4,7 @@
   MoveScaled(0,0,239,128)
   { GridView1 GridView
     MoveScaled(19,7,219,120)
-    Font = Font["+2"]
+    Font = Font["+1"]
     Mode = Select.Single
     Header = GridView.Horizontal
   }

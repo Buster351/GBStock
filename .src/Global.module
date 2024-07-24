@@ -3,8 +3,17 @@
 ' Gambas module file
 
 Public DateCF As Date
+Public DBconn As New Connection
 
-' 
+
+Public Sub Connect_database()
+  DBconn.Type = "sqlite3"
+  DBconn.Host = Application.Path
+  Print Application.Path
+  DBconn.Name = "/voc.sqlite3"
+  DBconn.Open()
+End 
+ 
 Public Sub SetupGrid(g As GridView, heading As String[])
   Dim i As Integer = 0
   Dim a As Integer = 0
@@ -220,7 +229,7 @@ End
 
 Public Function Get_Types(cb As ComboBox)
   Dim res As Result
-  res = GBStock.StockDB.Find("types")
+  res = Global.DBconn.Find("types")
   cb.Clear
   cb.Add("All")
   For Each res

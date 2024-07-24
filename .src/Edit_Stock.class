@@ -6,7 +6,7 @@ Public Sub Form_Show()
 
   Dim r As Result
 
-  r = GBStock.StockDB.Find("stock", "id = &1", GBStock.Selected_Stock)
+  r = Global.DBconn.Find("stock", "id = &1", GBStock.Selected_Stock)
   FillComboBox(r!type)
   ManTB.Text = r!man
   DesTB.Text = r!descrip
@@ -21,7 +21,7 @@ End
 
 Public Sub FillComboBox(type As String)
   Dim res As Result
-  res = GBStock.StockDB.Find("types")
+  res = Global.DBconn.Find("types")
   TypeCB.Clear
   For Each res
     TypeCB.Add(res!type)
@@ -50,7 +50,7 @@ Public Sub Update_Stock()
   
   Dim res As Result
   
-  res = GBStock.StockDB.Edit("stock", "id = &1", GBStock.Selected_Stock)
+  res = Global.DBconn.Edit("stock", "id = &1", GBStock.Selected_Stock)
   
 res!type = TypeCB.Current.Text
 res!man = ManTB.Text
@@ -65,7 +65,7 @@ If PictureBox1.Picture <> Null Then
 Endif
 
 res.Update
-GBStock.StockDB.Commit()
+Global.DBconn.Commit()
 End
 
 Public Sub Button2_Click()

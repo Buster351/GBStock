@@ -1,6 +1,6 @@
 ' Gambas class file
 
-Public StockDB As New Connection
+
 Public Selected_Stock As Integer
 Public Action_req As Boolean = False
 
@@ -85,7 +85,7 @@ End
 Public Sub Button1_Click()
 Dim r As Result
   Add_Stock.ShowModal
-  r = StockDB.Find("stock")
+  r = Global.DBconn.Find("stock")
   UpdateGrid(r)
 End
 
@@ -93,12 +93,10 @@ Public Sub Form_Show()
 
   Dim r As Result
 Me.Text = "GBStock " & Application.Version
-StockDB.Type = "sqlite3"
-StockDB.Host = Application.Path
-Print Application.Path
-StockDB.Name = "/voc.sqlite3"
-StockDB.Open()
-r = StockDB.Find("stock")
+
+Global.Connect_database()
+
+r = Global.DBconn.Find("stock")
 
 SetUpGrid()  
 UpdateGrid(r)
@@ -118,14 +116,14 @@ Public Sub Button2_Click()
 Dim r As Result
   Edit_Stock.ShowModal
   Button2.Enabled = False
-  r = StockDB.Find("stock")
+  r = Global.DBconn.Find("stock")
   UpdateGrid(r)
 
 End
 
 Public Sub Form_Close()
 
-  StockDB.Close
+  Global.DBconn.Close
 
 End
 
@@ -140,7 +138,7 @@ End
 
 Public Sub FillComboBox()
   Dim res As Result
-  res = GBStock.StockDB.Find("types")
+  res = Global.DBconn.Find("types")
   ComboBox1.Clear
   ComboBox1.Add("All")
   For Each res
@@ -155,9 +153,9 @@ Dim t As String
 
 t = ComboBox1.Current.Text
   If t = "All" Then
-    r = StockDB.Find("stock")
+    r = Global.DBconn.Find("stock")
   Else 
-  r = StockDB.Find("stock", "type = &1", t)
+  r = Global.DBconn.Find("stock", "type = &1", t)
   Endif 
   UpdateGrid(r)
 
