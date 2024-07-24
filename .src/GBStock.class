@@ -15,6 +15,7 @@ Public Sub SetUpGrid()
 GridView1.Columns.Count = 8
 GridView1.Columns[0].Alignment = Align.Center
 GridView1.Columns[0].Title = "id"
+
 With GridView1
   .Columns[1].Title = "Type"
   .Columns[1].Width = 150

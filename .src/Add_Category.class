@@ -3,6 +3,15 @@
 
 Public Sub Form_Show()
 
-  Global.Get_Types(ComboBox1)
+  'Global.Get_Types(ComboBox1)
+
+End
+
+Public Sub TextBox1_Change()
+Dim res As Result
+  res = Global.DBconn.Find("types", "type LIKE &1", "%" & Textbox1.Text & "%")
+  For Each res
+    TextArea1.text = res!type & Chr(13)
+  Next
 
 End
