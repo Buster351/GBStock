@@ -59,6 +59,7 @@ res!amount = StockVB.Value
 res!min = MinVB.Value
 res!max = MaxVB.Value
 res!reserve = ResVB.Value
+res!jobno = ValueBox1.Value
 res!editdate = Now
 If PictureBox1.Picture <> Null Then
   res!image = PictureBox1.Picture.ToString("png", 100)
