@@ -220,7 +220,7 @@ End
 
 Public Function Get_Types(cb As ComboBox)
   Dim res As Result
-  res = FMain.StockDB.Find("types")
+  res = GBStock.StockDB.Find("types")
   cb.Clear
   cb.Add("All")
   For Each res

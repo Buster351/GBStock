@@ -1,0 +1,83 @@
+' Gambas class file
+
+Public amt As Integer
+
+Public Sub Form_Show()
+
+  Dim r As Result
+
+  r = GBStock.StockDB.Find("stock", "id = &1", GBStock.Selected_Stock)
+  FillComboBox(r!type)
+  ManTB.Text = r!man
+  DesTB.Text = r!descrip
+  
+  amt = Int(r!amount)
+  StockVB.Value = amt
+  MinVB.Value = Int(r!min)
+  MaxVB.Value = Int(r!max)
+  ResVB.Value = Int(r!reserve)
+  PictureBox1.Picture = Global.Scale_Picture(Load_picture(r!image), PictureBox1.Width, PictureBox1.Height, True)
+End
+
+Public Sub FillComboBox(type As String)
+  Dim res As Result
+  res = GBStock.StockDB.Find("types")
+  TypeCB.Clear
+  For Each res
+    TypeCB.Add(res!type)
+  Next
+  TypeCB.Index = TypeCB.Find(type)
+End
+
+Public Function Load_picture(res As String) As Picture
+  Dim p As Picture
+  If Len(res) <> 0 Then
+    p = Picture.FromString(res)
+  Endif
+  
+  Return p
+  
+End
+
+Public Sub Button1_Click()
+
+  Update_Stock()
+  Me.Close
+
+End
+
+Public Sub Update_Stock()
+  
+  Dim res As Result
+  
+  res = GBStock.StockDB.Edit("stock", "id = &1", GBStock.Selected_Stock)
+  
+res!type = TypeCB.Current.Text
+res!man = ManTB.Text
+res!descrip = DesTB.Text
+res!amount = StockVB.Value
+res!min = MinVB.Value
+res!max = MaxVB.Value
+res!reserve = ResVB.Value
+res!editdate = Now
+If PictureBox1.Picture <> Null Then
+  res!image = PictureBox1.Picture.ToString("png", 100)
+Endif
+
+res.Update
+GBStock.StockDB.Commit()
+End
+
+Public Sub Button2_Click()
+
+  Me.Close
+
+End
+
+Public Sub FileChooser1_Activate()
+
+  Dim pic As Picture
+  pic = Picture.Load(FileChooser1.SelectedPath)
+  PictureBox1.Picture = Global.scale_Picture(pic, 260, 260, True)
+
+End

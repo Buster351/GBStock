@@ -1,0 +1,70 @@
+' Gambas class file
+
+Public Sub Run() As Boolean
+
+  Return Not Me.ShowModal()
+
+End
+
+Public Sub btnOK_Click()
+Dim res As Result
+
+res = GBStock.StockDB.Create("stock")
+res!type = ComboBox1.Current.Text
+res!man = TextBox1.Text
+res!descrip = TextBox2.Text
+res!amount = ValueBox1.Value
+res!min = ValueBox2.Value
+res!max = ValueBox3.Value
+res!reserve = ValueBox4.Value
+res!editdate = Now
+res!image = PictureBox1.Picture.ToString("png", 100)
+res.Update
+GBStock.StockDB.Commit()
+
+  Me.Close(True)
+
+End
+
+Public Sub btnCancel_Click()
+
+  Me.Close
+
+End
+
+
+Public Sub Form_Show()
+
+  FillComboBox()
+
+End
+
+
+Public Sub FillComboBox()
+  Dim res As Result
+  res = GBStock.StockDB.Find("types")
+  ComboBox1.Clear
+  For Each res
+    ComboBox1.Add(res!type)
+  Next
+  ComboBox1.Index = 0
+End
+
+Public Sub FileChooser1_Change()
+
+  
+
+End
+
+Public Sub FileChooser1_Enter()
+
+  
+
+End
+
+Public Sub FileChooser1_Activate()
+Dim pic As Picture
+  pic = Picture.Load(FileChooser1.SelectedPath)
+  PictureBox1.Picture = Global.scale_Picture(pic, 260, 260, True)
+
+End

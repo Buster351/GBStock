@@ -1,0 +1,75 @@
+' Gambas class file
+
+' Gambas class file
+Public amt As Integer ' Stock amount for this item
+Public amount_new As Integer
+
+
+Public Sub Run() As Boolean
+
+  Return Not Me.ShowModal()
+
+End
+
+Public Sub btnOK_Click()
+Dim r As Result
+  r = GBStock.StockDB.Edit("stock", "id = &1", GBStock.Selected_Stock)
+  r!type = TextBox1.Text
+  r!man = TextBox2.Text  
+  r!descrip = TextBox3.Text 
+  r!amount = amount_new
+  r!min = ValueBox2.Value 
+  r!max = ValueBox3.Value 
+  r!reserve = ValueBox4.Value
+  r!editdate = Now
+   
+  r.Update
+  GBStock.StockDB.Commit
+  
+  Me.Close(True)
+
+End
+
+Public Sub btnCancel_Click()
+
+  Me.Close
+
+End
+
+
+Public Sub Form_Show()
+Dim r As Result
+
+  r = GBStock.StockDB.Find("stock", "id = &1", GBStock.Selected_Stock)
+  TextBox1.Text = r!type
+  TextBox2.Text = r!man
+  TextBox3.Text = r!descrip
+  amt = Int(r!amount)
+  ValueBox1.Value = amt
+  
+  ValueBox2.Value = Int(r!min)
+  ValueBox3.Value = Int(r!max)
+  ValueBox4.Value = Int(r!reserve)
+  
+  
+
+End
+
+Public Sub SpinBox1_Change()
+
+  If ToggleButton1.Enabled Then
+    ValueBox1.Value = amt + SpinBox1.Value
+    amount_new = amt + SpinBox1.Value
+  Else 
+     ValueBox1.Value = amt - SpinBox1.Value
+     amount_new = amt - SpinBox1.Value 
+  Endif
+    
+End
+
+Public Sub SpinBox1_LostFocus()
+
+  'SpinBox1.Value = 0
+  
+
+End

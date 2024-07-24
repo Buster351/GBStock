@@ -1,0 +1,86 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,127,87)
+  { Panel2 Panel
+    MoveScaled(0,0,124,80)
+    Border = Border.Sunken
+    { Label1 Label
+      MoveScaled(3,4,11,4)
+      Text = ("Catecory")
+    }
+    { Label2 Label
+      MoveScaled(3,9,11,4)
+      Text = ("Manufacturer")
+    }
+    { Label3 Label
+      MoveScaled(3,21,11,4)
+      Text = ("Amount")
+    }
+    { Label4 Label
+      MoveScaled(3,15,11,4)
+      Text = ("Description")
+    }
+    { Label5 Label
+      MoveScaled(3,25,11,4)
+      Text = ("MIn Stock")
+    }
+    { Label6 Label
+      MoveScaled(27,26,11,4)
+      Text = ("Max Stock")
+    }
+    { Label7 Label
+      MoveScaled(3,30,11,4)
+      Text = ("Reserve")
+    }
+    { TypeCB ComboBox
+      MoveScaled(16,3,32,5)
+    }
+    { ManTB TextBox
+      MoveScaled(16,9,32,4)
+    }
+    { DesTB TextBox
+      MoveScaled(16,14,32,5)
+    }
+    { StockVB ValueBox
+      MoveScaled(16,21,9,4)
+    }
+    { MinVB ValueBox
+      MoveScaled(16,25,9,4)
+    }
+    { MaxVB ValueBox
+      MoveScaled(41,26,11,4)
+    }
+    { ResVB ValueBox
+      MoveScaled(16,30,9,4)
+    }
+    { PictureBox1 PictureBox
+      MoveScaled(4,39,46,37.1429)
+      Border = Border.Sunken
+    }
+    { FileChooser1 FileChooser
+      MoveScaled(53,3,68,72)
+      ShowButton = True
+      ReadOnly = True
+    }
+    { Label8 Label
+      MoveScaled(3,35,13,4)
+      Text = ("Image")
+    }
+    { Label9 Label
+      MoveScaled(27,30,13,4)
+      Text = ("Job No.")
+    }
+    { ValueBox1 ValueBox
+      MoveScaled(41,30,11,4)
+    }
+  }
+  { Button1 Button
+    MoveScaled(111,81,13,5)
+    Text = ("Ok")
+  }
+  { Button2 Button
+    MoveScaled(96,81,14,5)
+    Text = ("Cancel")
+  }
+}

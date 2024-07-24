@@ -1,0 +1,8 @@
+' Gambas class file
+
+
+Public Sub Form_Show()
+
+  Global.Get_Types(ComboBox1)
+
+End

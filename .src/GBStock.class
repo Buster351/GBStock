@@ -1,0 +1,170 @@
+' Gambas class file
+
+Public StockDB As New Connection
+Public Selected_Stock As Integer
+Public Action_req As Boolean = False
+
+Public Sub Form_Activate()
+
+
+End
+
+
+
+Public Sub SetUpGrid()
+GridView1.Columns.Count = 8
+GridView1.Columns[0].Alignment = Align.Center
+GridView1.Columns[0].Title = "id"
+With GridView1
+  .Columns[1].Title = "Type"
+  .Columns[1].Width = 150
+  .Columns[1].Alignment = Align.Center
+  
+  .Columns[2].Width = 400
+  .Columns[2].Alignment = Align.Center
+  .Columns[2].Title = "Description"
+  
+  .Columns[3].Title = "Real Stock"
+  .Columns[4].Title = "Reserved Stock"
+  .Columns[5].Title = "Stock with reserve"
+  .Columns[6].Title = "Min Stock"
+'GridView1[0, 0].Text = "0,0"
+'GridView1[0, 0].Alignment = Align.Center
+End With 
+End 
+
+Public Sub UpdateGrid(res As Result)
+  Dim current_stock As Integer
+  Dim reserve As Integer
+  Dim amt As Integer
+  
+  
+  
+   GridView1.Clear
+   GridView1.Rows.Count = res.Count
+   Action_req = False
+    
+    For Each res
+      reserve = Int(res!reserve)
+      amt = Int(res!amount)
+      current_stock = amt - reserve
+      
+      GridView1[res.Index, 0].Text = res!id
+      
+      GridView1[res.Index, 1].Text = res!type
+      GridView1[res.Index, 2].Text = res!descrip
+      If current_stock < 0 Then
+        GridView1[res.Index, 3].Foreground = Color.Purple
+        Action_req = True
+      Endif
+      GridView1[res.Index, 3].Text = amt
+      
+      If Int(res!amount) < Int(res!min) Then
+        GridView1[res.Index, 6].Foreground = Color.Red
+        Action_req = True
+      ' Else 
+      '   Action_req = False
+      Endif
+      GridView1[res.Index, 6].Text = res!min
+      If Int(res!reserve) > 0 Then
+        GridView1[res.Index, 4].Foreground = Color.Yellow
+      Endif
+      GridView1[res.Index, 4].Text = res!reserve
+      If current_stock < 0 Then
+        GridView1[res.Index, 5].Foreground = Color.Black
+        GridView1[res.Index, 5].background = Color.Cyan
+      Endif
+      GridView1[res.Index, 5].text = current_stock
+      If res!image.Length <> 0 Then
+        GridView1.Rows[res.Index].Height = 100
+        GridView1[res.Index, 7].Picture = Global.Scale_Picture(Global.Get_Picture(res!image), 100, 100, True)
+      Endif
+    Next
+End
+
+Public Sub Button1_Click()
+Dim r As Result
+  Add_Stock.ShowModal
+  r = StockDB.Find("stock")
+  UpdateGrid(r)
+End
+
+Public Sub Form_Show()
+
+  Dim r As Result
+Me.Text = "GBStock " & Application.Version
+StockDB.Type = "sqlite3"
+StockDB.Host = Application.Path
+Print Application.Path
+StockDB.Name = "/voc.sqlite3"
+StockDB.Open()
+r = StockDB.Find("stock")
+
+SetUpGrid()  
+UpdateGrid(r)
+FillComboBox
+End
+
+Public Sub GridView1_Select()
+
+
+  Button2.Enabled = True
+  Selected_Stock = Val(GridView1[GridView1.Row, 0].Text)
+  'Print Selected_Stock
+  
+End
+
+Public Sub Button2_Click()
+Dim r As Result
+  Edit_Stock.ShowModal
+  Button2.Enabled = False
+  r = StockDB.Find("stock")
+  UpdateGrid(r)
+
+End
+
+Public Sub Form_Close()
+
+  StockDB.Close
+
+End
+
+Public Sub Timer1_Timer()
+
+  If Action_req
+    Print ("fix me")
+  Endif 
+  Print Action_req
+End
+
+
+Public Sub FillComboBox()
+  Dim res As Result
+  res = GBStock.StockDB.Find("types")
+  ComboBox1.Clear
+  ComboBox1.Add("All")
+  For Each res
+    ComboBox1.Add(res!type)
+  Next
+  ComboBox1.Index = 0
+End
+
+Public Sub ComboBox1_Change()
+Dim r As Result
+Dim t As String
+
+t = ComboBox1.Current.Text
+  If t = "All" Then
+    r = StockDB.Find("stock")
+  Else 
+  r = StockDB.Find("stock", "type = &1", t)
+  Endif 
+  UpdateGrid(r)
+
+End
+
+Public Sub Button3_Click()
+
+  Add_Category.ShowModal
+
+End
