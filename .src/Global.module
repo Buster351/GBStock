@@ -1,0 +1,230 @@
+' Gambas module file
+
+' Gambas module file
+
+Public DateCF As Date
+
+' 
+Public Sub SetupGrid(g As GridView, heading As String[])
+  Dim i As Integer = 0
+  Dim a As Integer = 0
+With g
+
+.Clear
+    .Columns.Count = heading.Count / 2
+    For i = 0 To heading.Count - 1
+    .Columns[a].text = heading[i]
+    
+     Inc i 
+    .Columns[a].width = heading[i]
+     Inc a
+    Next
+    ' .Columns[1].Width = 300
+    ' .Columns[1].Text = "Client"
+    ' .Columns[2].Width = 300
+    ' .Columns[2].Text = "Address"
+    ' .Columns[3].Width = 100
+    ' .Columns[3].Text = "Phone"
+    ' .Columns[4].Width = 100
+    ' .Columns[4].Text = "Mobile"
+  End With
+  
+End
+
+
+Public Function GetID(g As GridView) As Integer
+  
+ Return Val(g[g.Row, 0].Text)
+  
+End
+
+Public Function GetIDY(g As GridView, x As Integer, y As Integer) As Integer
+  Dim r As Integer
+    r = g.RowAt(y)
+  Return Val(g[r, 0].Text)
+   
+End
+
+ Public Function LoadScaled(path As String, width As Integer, height As Integer, aspect As Boolean) As Picture
+  
+  Dim img As Picture
+  Dim newImg As New Image
+  Dim ratioX As Float
+  Dim ratioY As Float
+  Dim ratio As Float
+  Dim newWidth As Integer
+  Dim newHeight As Integer
+  
+  img = Picture.Load(path)
+  
+  ratioX = width / img.Width
+  ratioY = height / img.Height
+  
+  If ratioX < ratioY 
+   ratio = ratioX
+  Else
+    ratio = ratioY
+  Endif
+  newWidth = img.Width * ratio
+  newHeight = img.Height * ratio
+  'newimg = New Image(newWidth, newHeight)
+  If aspect
+    newImg = img.Image.Stretch(newWidth, newHeight)
+  Else
+    newImg = img.Image.Stretch(width, height)
+  Endif
+  
+  Return newImg.Picture
+  Catch
+End
+
+
+
+ Public Function LoadScaledImg(path As String, width As Integer, height As Integer, aspect As Boolean) As Image
+  
+  Dim img As Picture
+  Dim newImg As New Image
+  Dim ratioX As Float
+  Dim ratioY As Float
+  Dim ratio As Float
+  Dim newWidth As Integer
+  Dim newHeight As Integer
+  
+  img = Picture.Load(path)
+  
+  ratioX = width / img.Width
+  ratioY = height / img.Height
+  
+  If ratioX < ratioY 
+   ratio = ratioX
+  Else
+    ratio = ratioY
+  Endif
+  newWidth = img.Width * ratio
+  newHeight = img.Height * ratio
+  'newimg = New Image(newWidth, newHeight)
+  If aspect
+    newImg = img.Image.Stretch(newWidth, newHeight)
+  Else
+    newImg = img.Image.Stretch(width, height)
+  Endif
+  
+  Return newImg
+  Catch
+End
+
+' Public Function GetPictureFromDB(id As Integer, wid As Integer, hei As Integer) As Picture
+'   Dim tempFile As String
+'   'Dim tempPicture As String
+'   Dim p As Result
+'   Dim pic As Picture
+'   
+'   tempFile = Temp() & ".png"
+'   
+'   p = DataB.GetRecordFromID("products", id)
+'   If p!image.Data <> "" Then
+'     If tempFile Then
+'       File.Save(tempFile, p!image.Data)
+'     
+'       'pic = Picture.Load(tempFile)
+'       pic = LoadScaled(tempFile, wid, hei, True)
+'     Else
+'       pic = Null
+'     Endif
+'   Endif
+'   If Exist(tempFile) Then Kill tempFile
+'   
+'   Return pic
+'   
+' End
+
+' Private Sub ShowImage(Row As Integer)
+'   Dim tempFile As String
+'   Dim tempPicture As String
+'   tempFile = Temp() & ".png"
+'   ModuleDatabase.ResultPictures.MoveTo(Row)
+'   TextAreaDescription.Text = ModuleDatabase.ResultPictures["description"]
+'   If tempFile Then 
+'     'tempPicture = ModuleDatabase.ResultPictures["image"].Data
+'     File.Save(tempFile, ModuleDatabase.ResultPictures["image"].Data)
+'     PictureBoxImage.Picture = Picture.Load(tempFile)  
+'     PictureBoxImage.Resize(PictureBoxImage.Picture.Width, PictureBoxImage.Picture.Height)
+'   Else 
+'      PictureBoxImage.Picture = Null
+'   End If
+'   If Exist(tempFile) Then Kill tempFile
+' End
+Public Function GetPictureFromResult(res As Result, wid As Integer, hei As Integer) As Picture
+  Dim tempFile As String
+  'Dim tempPicture As String
+  'Dim p As Result
+  Dim pic As Picture
+  
+  tempFile = Temp() & ".png"
+  
+  'p = DataB.GetRecordFromID("products", id)
+  If res!image.Data <> "" Then
+    If tempFile Then
+      File.Save(tempFile, res!image.Data)
+    
+      'pic = Picture.Load(tempFile)
+      pic = LoadScaled(tempFile, wid, hei, True)
+    Else
+      pic = Null
+    Endif
+  Endif
+  If Exist(tempFile) Then Kill tempFile
+  
+  Return pic
+  
+End
+
+Public Function Get_Picture(pic As String) As Picture
+  Dim p As Picture
+    p = Picture.FromString(pic)
+  Return p
+    
+End
+
+Public Function Scale_Picture(p As Picture, width As Integer, height As Integer, aspect As Boolean) As Picture
+  
+  Dim img As Picture
+  Dim newImg As New Image
+  Dim ratioX As Float
+  Dim ratioY As Float
+  Dim ratio As Float
+  Dim newWidth As Integer
+  Dim newHeight As Integer
+  
+    
+  ratioX = width / p.Width
+  ratioY = height / p.Height
+  
+  If ratioX < ratioY 
+   ratio = ratioX
+  Else
+    ratio = ratioY
+  Endif
+  newWidth = p.Width * ratio
+  newHeight = p.Height * ratio
+  'newimg = New Image(newWidth, newHeight)
+  If aspect
+    newImg = p.Image.Stretch(newWidth, newHeight)
+  Else
+    newImg = p.Image.Stretch(width, height)
+  Endif
+  
+  Return newImg.Picture
+  Catch
+End
+
+Public Function Get_Types(cb As ComboBox)
+  Dim res As Result
+  res = FMain.StockDB.Find("types")
+  cb.Clear
+  cb.Add("All")
+  For Each res
+    cb.Add(res!type)
+  Next
+  cb.Index = 0
+End
