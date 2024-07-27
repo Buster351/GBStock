@@ -48,7 +48,7 @@
       Text = ("MIn Stock")
     }
     { Label6 Label
-      MoveScaled(29,26,11,4)
+      MoveScaled(29,25,11,4)
       Text = ("Max Stock")
     }
     { Label7 Label
@@ -71,7 +71,7 @@
       MoveScaled(16,25,9,4)
     }
     { ValueBox3 ValueBox
-      MoveScaled(43,26,9,4)
+      MoveScaled(43,25,9,4)
     }
     { ValueBox4 ValueBox
       MoveScaled(16,29,9,4)
@@ -88,6 +88,13 @@
     { Label8 Label
       MoveScaled(3,35,13,4)
       Text = ("Image")
+    }
+    { Label9 Label
+      MoveScaled(29,30,11,4)
+      Text = ("Job No.")
+    }
+    { ValueBox5 ValueBox
+      MoveScaled(43,31,8,4)
     }
   }
 }
