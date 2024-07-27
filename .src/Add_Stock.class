@@ -18,7 +18,10 @@ res!min = ValueBox2.Value
 res!max = ValueBox3.Value
 res!reserve = ValueBox4.Value
 res!editdate = Now
-res!image = PictureBox1.Picture.ToString("png", 100)
+If PictureBox1.Picture <> Null Then
+  res!image = PictureBox1.Picture.ToString("png", 100)
+Endif
+  
 res.Update
 Global.DBconn.Commit()
 
