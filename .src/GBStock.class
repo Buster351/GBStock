@@ -3,6 +3,8 @@
 
 Public Selected_Stock As Integer
 Public Action_req As Boolean = False
+Public snd As Sound
+
 
 Public Sub Form_Activate()
 
@@ -93,7 +95,9 @@ End
 Public Sub Form_Show()
 
   Dim r As Result
+  
 Me.Text = "GBStock " & Application.Version
+snd = Sound.Load(Application.Path & "/" & "warning.mp3")
 
 Global.Connect_database()
 
@@ -132,6 +136,11 @@ Public Sub Timer1_Timer()
 
   If Action_req
     Print ("fix me")
+    PictureBox1.Visible = True
+    snd.Play()
+  Else 
+    PictureBox1.Visible = False
+    
   Endif 
   Print Action_req
 End
