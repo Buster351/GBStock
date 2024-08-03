@@ -28,11 +28,15 @@ With GridView1
   .Columns[2].Title = "Description"
   
   .Columns[3].Title = "Real Stock"
+  .Columns[3].Alignment = Align.Center
   .Columns[4].Title = "Reserved Stock"
+  .Columns[4].Alignment = Align.Center
   .Columns[5].Title = "Stock with reserve"
   .Columns[5].Alignment = Align.Center
   .Columns[6].Title = "Min Stock"
+  .Columns[6].Alignment = Align.Center
   .Columns[8].Title = "Part Number"
+  .Columns[8].Alignment = Align.Center
 'GridView1[0, 0].Text = "0,0"
 'GridView1[0, 0].Alignment = Align.Center
 End With 
@@ -56,7 +60,7 @@ Public Sub UpdateGrid(res As Result)
       
       GridView1[res.Index, 0].Text = res!id
       
-      GridView1[res.Index, 8].RichText = "<h3>" & res!part & "</h3>"
+      GridView1[res.Index, 8].RichText = Global.ToRichtext(res!part, 1)
             
       'GridView1[res.Index, 1].Text = res!type
       GridView1[res.Index, 2].Text = Global.WordWrap(res!descrip, 50)
@@ -66,7 +70,7 @@ Public Sub UpdateGrid(res As Result)
       Endif
       
       
-      GridView1[res.Index, 3].Text = amt
+      GridView1[res.Index, 3].RichText = Global.ToRichtext(amt, 3)
       
       If Int(res!amount) < Int(res!min) Then
         GridView1[res.Index, 6].Foreground = Color.Red
@@ -74,16 +78,16 @@ Public Sub UpdateGrid(res As Result)
       ' Else 
       '   Action_req = False
       Endif
-      GridView1[res.Index, 6].Text = res!min
+      GridView1[res.Index, 6].RichText = Global.ToRichtext(res!min, 1)
       If Int(res!reserve) > 0 Then
         GridView1[res.Index, 4].Foreground = Color.Yellow
       Endif
-      GridView1[res.Index, 4].Text = res!reserve
+      GridView1[res.Index, 4].RichText = Global.ToRichtext(res!reserve, 1)
       If current_stock < 0 Then
         GridView1[res.Index, 5].Foreground = Color.Black
         GridView1[res.Index, 5].Background = Color.Cyan
       Endif
-      GridView1[res.Index, 5].RichText = "<h2> " & current_stock & "</h2> " 'current_stock"
+      GridView1[res.Index, 5].RichText = Global.ToRichtext(current_stock, 1) 'current_stock"
       If res!image.Length <> 0 Then
         GridView1.Rows[res.Index].Height = 100
         GridView1[res.Index, 1].Picture = Global.Scale_Picture(Global.Get_Picture(res!image), 100, 100, True)

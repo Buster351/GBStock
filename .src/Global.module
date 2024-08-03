@@ -243,12 +243,22 @@ Public Function WordWrap(TextToWrap As String, LengthToWrap As Integer) As Strin
     Dim iCount As Integer
      
     iCount = LengthToWrap
-    
+    If Len(TextToWrap) >= iCount
      While Mid$(TextToWrap, iCount, 1) <> " "        'find first white space backward from LenghtToWrap to make the split
          Dec iCount
          If iCount <= 0 Then Break 
      Wend
-  
+  Endif 
+    
     Return Subst("&1\n&2", Mid$(TextToWrap, 1, iCount), Mid$(TextToWrap, iCount + 1))
   
+End
+
+Public Function ToRichtext(text As String, size As Integer) As String
+  Dim new_text As String
+  
+  
+  new_text = "<h3>" & text & " </h3>"  
+  'new_text = "<b> Hello World </b>"
+  Return new_text  
 End
