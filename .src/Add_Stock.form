@@ -51,6 +51,7 @@
     { PictureBox1 PictureBox
       MoveScaled(2,40,46,37.1429)
       Picture = Picture.Load("missing-product.jpg")
+      Stretch = True
       Border = Border.Sunken
     }
     { FileChooser1 FileChooser
