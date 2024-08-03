@@ -10,7 +10,7 @@ Public Sub Form_Show()
   FillComboBox(r!type)
   ManTB.Text = r!man
   DesTB.Text = r!descrip
-  
+  TextBox3.Text = r!part
   amt = Int(r!amount)
   StockVB.Value = amt
   MinVB.Value = Int(r!min)
@@ -60,6 +60,7 @@ res!min = MinVB.Value
 res!max = MaxVB.Value
 res!reserve = ResVB.Value
 res!jobno = ValueBox1.Value
+res!part = TextBox3.Text
 res!editdate = Now
 If PictureBox1.Picture <> Null Then
   res!image = PictureBox1.Picture.ToString("png", 100)

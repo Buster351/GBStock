@@ -14,7 +14,7 @@ End
 
 
 Public Sub SetUpGrid()
-GridView1.Columns.Count = 8
+GridView1.Columns.Count = 9
 GridView1.Columns[0].Alignment = Align.Center
 GridView1.Columns[0].Title = "id"
 
@@ -53,13 +53,16 @@ Public Sub UpdateGrid(res As Result)
       current_stock = amt - reserve
       
       GridView1[res.Index, 0].Text = res!id
-      
+      GridView1[res.Index, 8].Text = res!part
+            
       'GridView1[res.Index, 1].Text = res!type
-      GridView1[res.Index, 2].Text = res!descrip
+      GridView1[res.Index, 2].Text = Global.WordWrap(res!descrip, 40)
       If current_stock < 0 Then
         GridView1[res.Index, 3].Foreground = Color.Purple
         Action_req = True
       Endif
+      
+      
       GridView1[res.Index, 3].Text = amt
       
       If Int(res!amount) < Int(res!min) Then
@@ -75,7 +78,7 @@ Public Sub UpdateGrid(res As Result)
       GridView1[res.Index, 4].Text = res!reserve
       If current_stock < 0 Then
         GridView1[res.Index, 5].Foreground = Color.Black
-        GridView1[res.Index, 5].background = Color.Cyan
+        GridView1[res.Index, 5].Background = Color.Cyan
       Endif
       GridView1[res.Index, 5].text = current_stock
       If res!image.Length <> 0 Then
@@ -134,10 +137,12 @@ End
 
 Public Sub Timer1_Timer()
 
-  If Action_req
+  If Action_req 
     Print ("fix me")
     PictureBox1.Visible = True
-    snd.Play()
+    If SwitchButton1.Value
+      snd.Play()
+    Endif  
   Else 
     PictureBox1.Visible = False
     

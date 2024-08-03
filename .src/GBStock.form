@@ -2,9 +2,12 @@
 
 { Form Form
   MoveScaled(0,0,239,128)
+  Background = &H383838
   { GridView1 GridView
     MoveScaled(19,7,219,120)
-    Font = Font["+1"]
+    Font = Font["11"]
+    Background = &H404040
+    Foreground = &HC0C0C0
     Mode = Select.Single
     Header = GridView.Horizontal
   }
@@ -39,10 +42,10 @@
     Text = ("Search")
   }
   { TextBox1 TextBox
-    MoveScaled(116,2,68,4)
+    MoveScaled(96,2,68,4)
   }
   { Label3 Label
-    MoveScaled(102,2,12,4)
+    MoveScaled(83,2,12,4)
     Text = ("Description")
   }
   { Button3 Button
@@ -50,8 +53,11 @@
     Text = ("Category")
   }
   { PictureBox1 PictureBox
-    MoveScaled(3,26,7,8)
+    MoveScaled(6,34,7,8)
     Visible = False
     Picture = Picture.Load("icon:/huge/warning")
+  }
+  { SwitchButton1 SwitchButton
+    MoveScaled(5,43,8,4)
   }
 }

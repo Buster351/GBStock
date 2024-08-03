@@ -10,7 +10,7 @@ Public Sub Connect_database()
   DBconn.Type = "sqlite3"
   DBconn.Host = Application.Path
   Print Application.Path
-  DBconn.Name = "/voc.sqlite3"
+  DBconn.Name = "GBStock.sqlite3"
   DBconn.Open()
 End 
  
@@ -236,4 +236,19 @@ Public Function Get_Types(cb As ComboBox)
     cb.Add(res!type)
   Next
   cb.Index = 0
+End
+
+Public Function WordWrap(TextToWrap As String, LengthToWrap As Integer) As String
+   
+    Dim iCount As Integer
+     
+    iCount = LengthToWrap
+    
+     While Mid$(TextToWrap, iCount, 1) <> " "        'find first white space backward from LenghtToWrap to make the split
+         Dec iCount
+         If iCount <= 0 Then Break 
+     Wend
+  
+    Return Subst("&1\n&2", Mid$(TextToWrap, 1, iCount), Mid$(TextToWrap, iCount + 1))
+  
 End

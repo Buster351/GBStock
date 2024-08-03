@@ -12,11 +12,12 @@ Dim res As Result
 res = Global.DBconn.Create("stock")
 res!type = ComboBox1.Current.Text
 res!man = TextBox1.Text
-res!descrip = TextBox2.Text
+res!descrip = TextArea1.Text
 res!amount = ValueBox1.Value
 res!min = ValueBox2.Value
 res!max = ValueBox3.Value
 res!reserve = ValueBox4.Value
+res!part = TextBox3.Text
 res!editdate = Now
 If PictureBox1.Picture <> Null Then
   res!image = PictureBox1.Picture.ToString("png", 100)
