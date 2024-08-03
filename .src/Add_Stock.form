@@ -46,14 +46,16 @@
       MoveScaled(16,9,32,4)
     }
     { TextBox2 TextBox
-      MoveScaled(47,69,32,5)
+      MoveScaled(52,41,26,5)
     }
     { PictureBox1 PictureBox
       MoveScaled(2,40,46,37.1429)
+      Picture = Picture.Load("missing-product.jpg")
       Border = Border.Sunken
     }
     { FileChooser1 FileChooser
       MoveScaled(81,3,68,74)
+      ShowFile = False
       ReadOnly = True
     }
     { Label8 Label

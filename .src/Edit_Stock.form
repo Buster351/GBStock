@@ -56,11 +56,12 @@
     }
     { PictureBox1 PictureBox
       MoveScaled(3,47,46,37.1429)
+      Picture = Picture.Load("missing-product.jpg")
       Border = Border.Sunken
     }
     { FileChooser1 FileChooser
-      MoveScaled(88,2,68,72)
-      ShowButton = True
+      MoveScaled(88,2,68,84)
+      ShowFile = False
       ReadOnly = True
     }
     { Label8 Label
