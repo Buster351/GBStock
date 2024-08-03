@@ -78,21 +78,21 @@
     { Panel4 Panel
       MoveScaled(51,11,27,7)
       { Label5 Label
-        MoveScaled(1,1,11,4)
+        MoveScaled(2,1,11,4)
         Text = ("MIn Stock")
       }
       { ValueBox2 ValueBox
-        MoveScaled(14,1,9,4)
+        MoveScaled(17,1,9,4)
       }
     }
     { Panel5 Panel
       MoveScaled(51,19,27,8)
       { Label6 Label
-        MoveScaled(3,2,11,4)
+        MoveScaled(2,2,11,4)
         Text = ("Max Stock")
       }
       { ValueBox3 ValueBox
-        MoveScaled(16,2,9,4)
+        MoveScaled(17,2,9,4)
       }
     }
     { Panel6 Panel
