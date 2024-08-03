@@ -133,9 +133,10 @@ Dim r As Result
 End
 
 Public Sub Form_Close()
-
+  
   Global.DBconn.Close
-
+  
+  
 End
 
 Public Sub Timer1_Timer()

@@ -120,7 +120,8 @@
       }
     }
     { Panel7 Panel
-      MoveScaled(3,21,45,8)
+      MoveScaled(3,25,45,8)
+      Border = Border.Raised
       { Label10 Label
         MoveScaled(1,2,7,3)
         Text = ("Part No.")
@@ -132,6 +133,9 @@
     { TextArea1 TextArea
       MoveScaled(16,14,32,5)
       Wrap = True
+    }
+    { Button1 Button
+      MoveScaled(16,20,4,3)
     }
   }
 }
