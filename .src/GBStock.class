@@ -15,7 +15,7 @@ End
 
 Public Sub SetUpGrid()
 GridView1.Columns.Count = 9
-GridView1.Columns[0].Alignment = Align.Center
+GridView1.Columns[0].Alignment = Align.Justify
 GridView1.Columns[0].Title = "id"
 
 With GridView1
@@ -30,7 +30,9 @@ With GridView1
   .Columns[3].Title = "Real Stock"
   .Columns[4].Title = "Reserved Stock"
   .Columns[5].Title = "Stock with reserve"
+  .Columns[5].Alignment = Align.Center
   .Columns[6].Title = "Min Stock"
+  .Columns[8].Title = "Part Number"
 'GridView1[0, 0].Text = "0,0"
 'GridView1[0, 0].Alignment = Align.Center
 End With 
@@ -40,7 +42,7 @@ Public Sub UpdateGrid(res As Result)
   Dim current_stock As Integer
   Dim reserve As Integer
   Dim amt As Integer
-  
+  Dim part_no As String
   
   
    GridView1.Clear
@@ -53,10 +55,11 @@ Public Sub UpdateGrid(res As Result)
       current_stock = amt - reserve
       
       GridView1[res.Index, 0].Text = res!id
-      GridView1[res.Index, 8].Text = res!part
+      
+      GridView1[res.Index, 8].RichText = "<h3>" & res!part & "</h3>"
             
       'GridView1[res.Index, 1].Text = res!type
-      GridView1[res.Index, 2].Text = Global.WordWrap(res!descrip, 40)
+      GridView1[res.Index, 2].Text = Global.WordWrap(res!descrip, 50)
       If current_stock < 0 Then
         GridView1[res.Index, 3].Foreground = Color.Purple
         Action_req = True
@@ -80,7 +83,7 @@ Public Sub UpdateGrid(res As Result)
         GridView1[res.Index, 5].Foreground = Color.Black
         GridView1[res.Index, 5].Background = Color.Cyan
       Endif
-      GridView1[res.Index, 5].text = current_stock
+      GridView1[res.Index, 5].RichText = "<h2> " & current_stock & "</h2> " 'current_stock"
       If res!image.Length <> 0 Then
         GridView1.Rows[res.Index].Height = 100
         GridView1[res.Index, 1].Picture = Global.Scale_Picture(Global.Get_Picture(res!image), 100, 100, True)
