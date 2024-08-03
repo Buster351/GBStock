@@ -60,4 +60,8 @@
   { SwitchButton1 SwitchButton
     MoveScaled(5,43,8,4)
   }
+  { Button4 Button
+    MoveScaled(2,25,13,4)
+    Text = ("Brands")
+  }
 }

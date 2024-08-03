@@ -1,5 +1,23 @@
 # Gambas Form File 3.0
 
-{ Brands Form
-  MoveScaled(0,0,64,64)
+{ Form Form
+  MoveScaled(0,0,64,68)
+  { GridView1 GridView
+    MoveScaled(2,9,60,53)
+  }
+  { TextBox1 TextBox
+    MoveScaled(2,2,33,5)
+  }
+  { Button1 Button
+    MoveScaled(37,2,8,5)
+    Text = ("Add")
+  }
+  { Button2 Button
+    MoveScaled(37,63,11,4)
+    Text = ("Cancel")
+  }
+  { Button3 Button
+    MoveScaled(50,63,11,4)
+    Text = ("Ok")
+  }
 }

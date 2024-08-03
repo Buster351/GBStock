@@ -1,2 +1,33 @@
 ' Gambas class file
 
+
+Public Sub Form_Show()
+
+GridView1.Columns.Count = 3
+GridView1.Columns[0].Alignment = Align.Justify
+GridView1.Columns[0].Title = "id"
+GridView1.Columns[1].Alignment = Align.Center
+GridView1.Columns[1].Title = "Brand"
+
+End
+
+Public Sub Button2_Click()
+
+  Me.Close
+
+End
+
+Public Sub Button3_Click()
+
+  Me.Close
+
+End
+
+Public Sub Button1_Click()
+Dim res As Result
+  res = Global.DBconn.Create("brands")
+  res!brand = TextBox1.Text
+  res!date = Now
+  res.Update
+  Global.DBconn.Commit
+End

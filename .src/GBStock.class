@@ -184,3 +184,10 @@ Public Sub Button3_Click()
   Add_Category.ShowModal
   Global.Get_Types(ComboBox1)
 End
+
+Public Sub Button4_Click()
+
+  Brands.ShowModal
+  
+
+End
