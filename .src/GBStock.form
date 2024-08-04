@@ -3,6 +3,7 @@
 { Form Form
   MoveScaled(0,0,239,128)
   Background = &H383838
+  Foreground = &H383838
   { GridView1 GridView
     MoveScaled(19,7,219,120)
     Font = Font["11"]
@@ -14,12 +15,14 @@
   { Button1 Button
     MoveScaled(2,7,15,4)
     Font = Font["+2"]
+    Foreground = &HC0C0C0
     Text = ("Add Stock")
   }
   { Button2 Button
     MoveScaled(2,13,14,4)
     Enabled = False
     Font = Font["+2"]
+    Foreground = &HC0C0C0
     Text = ("Edit Stock")
   }
   { Timer1 #Timer
@@ -30,26 +33,32 @@
   { Label1 Label
     MoveScaled(31,2,11,4)
     Font = Font["+2"]
+    Foreground = &HC0C0C0
     Text = ("Category")
   }
   { ComboBox1 ComboBox
     MoveScaled(44,2,37,4)
     Font = Font["+2"]
+    Foreground = &HC0C0C0
   }
   { Label2 Label
     MoveScaled(20,2,10,4)
     Font = Font["+2"]
+    Foreground = &HC0C0C0
     Text = ("Search")
   }
   { TextBox1 TextBox
     MoveScaled(96,2,68,4)
+    Foreground = &HC0C0C0
   }
   { Label3 Label
     MoveScaled(83,2,12,4)
+    Foreground = &HC0C0C0
     Text = ("Description")
   }
   { Button3 Button
     MoveScaled(2,19,14,4)
+    Foreground = &HC0C0C0
     Text = ("Category")
   }
   { PictureBox1 PictureBox
@@ -62,6 +71,7 @@
   }
   { Button4 Button
     MoveScaled(2,25,13,4)
+    Foreground = &HC0C0C0
     Text = ("Brands")
   }
 }
