@@ -262,3 +262,15 @@ Public Function ToRichtext(text As String, size As Integer) As String
   'new_text = "<b> Hello World </b>"
   Return new_text  
 End
+
+Public Sub FillCombo(combo As ComboBox, table As String)
+  
+  Dim res As Result
+  res = Global.DBconn.Find(table)
+  combo.Clear
+  For Each res
+    combo.Add(res!brand)
+  Next
+  combo.Index = 0
+  
+End

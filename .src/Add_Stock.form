@@ -40,10 +40,10 @@
       Text = ("Description")
     }
     { ComboBox1 ComboBox
-      MoveScaled(16,3,32,5)
+      MoveScaled(16,4,32,4)
     }
     { TextBox1 TextBox
-      MoveScaled(16,9,32,4)
+      MoveScaled(49,55,32,4)
     }
     { PictureBox1 PictureBox
       MoveScaled(2,40,46,37.1429)
@@ -143,6 +143,9 @@
       { ComboBox3 ComboBox
         MoveScaled(11,1,16,4)
       }
+    }
+    { ComboBox4 ComboBox
+      MoveScaled(16,9,31,4)
     }
   }
 }

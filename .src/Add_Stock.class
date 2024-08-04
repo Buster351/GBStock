@@ -40,6 +40,7 @@ End
 Public Sub Form_Show()
 
   FillComboBox()
+Global.FillCombo(ComboBox4, "brands")
 
 End
 
