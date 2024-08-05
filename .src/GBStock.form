@@ -41,6 +41,7 @@
   { ComboBox1 ComboBox
     MoveScaled(44,2,37,4)
     Font = Font["+2"]
+    Background = &HE0E0E0
     Foreground = &H202020
   }
   { Label2 Label
@@ -51,6 +52,7 @@
   }
   { TextBox1 TextBox
     MoveScaled(96,2,68,4)
+    Background = &HE0E0E0
     Foreground = &H202020
   }
   { Label3 Label

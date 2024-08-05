@@ -29,7 +29,7 @@
     Border = Border.Sunken
     { Label1 Label
       MoveScaled(2,4,11,4)
-      Text = ("Type")
+      Text = ("Category")
     }
     { Label2 Label
       MoveScaled(2,9,11,4)
@@ -140,8 +140,8 @@
         MoveScaled(1,1,9,4)
         Text = ("Location")
       }
-      { ComboBox3 ComboBox
-        MoveScaled(11,1,16,4)
+      { Location_Text TextBox
+        MoveScaled(10,1,16,4)
       }
     }
     { ComboBox4 ComboBox
