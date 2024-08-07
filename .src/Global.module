@@ -11,7 +11,7 @@ Public Sub Connect_database()
   DBconn.Host = Application.Path
   Print Application.Path
   DBconn.Name = "GBStock.sqlite3"
-  DBconn.Open()
+  Try DBconn.Open()
 End 
  
 Public Sub SetupGrid(g As GridView, heading As String[])

@@ -13,9 +13,9 @@ Dim res As Result
 
 res = Global.DBconn.Create("stock")
 res!type = ComboBox1.Current.Text
-res!man = TextBox1.Text
+res!man = ComboBox4.Text
 res!descrip = TextArea1.Text
-res!amount = ValueBox1.Value
+res!amount = SpinBox1.Value
 res!min = ValueBox2.Value
 res!max = ValueBox3.Value
 res!reserve = ValueBox4.Value
@@ -112,9 +112,9 @@ Public Sub Fill_Fields()
   Dim res As Result
   res = Global.DBconn.Find("stock", "id = &1", GBStock.Selected_Stock)
   ComboBox1.Current.Text = res!type
-  TextBox1.Text = res!man
+  ComboBox4.Text = res!man
   TextArea1.Text = res!descrip
-  ValueBox1.Value = res!amount
+  SpinBox1.Value = res!amount
   ValueBox2.Value = res!min
   ValueBox3.Value = res!max
   ValueBox4.Value = res!reserve

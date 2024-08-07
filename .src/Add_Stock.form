@@ -64,16 +64,11 @@
       MoveScaled(51,3,28,7)
       Border = Border.Raised
       { Label3 Label
-        MoveScaled(1,1,11,4)
+        MoveScaled(1,1,11,5)
         Text = ("Amount")
       }
-      { ValueBox1 ValueBox
-        MoveScaled(11,1,9,4)
-      }
-      { ComboBox2 ComboBox
-        MoveScaled(21,1,5,4)
-        Font = Font["-3"]
-        Text = ("Units")
+      { SpinBox1 SpinBox
+        MoveScaled(10,1,14,5)
       }
     }
     { Panel4 Panel
