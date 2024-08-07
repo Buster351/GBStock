@@ -116,6 +116,7 @@ r = Global.DBconn.Find("stock")
 SetUpGrid()  
 UpdateGrid(r)
 FillComboBox
+Global.FillCombo(Brand_Combo, "brands")
 End
 
 Public Sub GridView1_Select()
@@ -171,16 +172,16 @@ Public Sub FillComboBox()
 End
 
 Public Sub ComboBox1_Change()
-Dim r As Result
-Dim t As String
-
-t = ComboBox1.Current.Text
-  If t = "All" Then
-    r = Global.DBconn.Find("stock")
-  Else 
-  r = Global.DBconn.Find("stock", "type = &1", t)
-  Endif 
-  UpdateGrid(r)
+' Dim r As Result
+' Dim t As String
+' 
+' t = ComboBox1.Current.Text
+'   If t = "All" Then
+'     r = Global.DBconn.Find("stock")
+'   Else 
+'   r = Global.DBconn.Find("stock", "type = &1", t)
+'   Endif 
+'   UpdateGrid(r)
 
 End
 
@@ -195,4 +196,47 @@ Public Sub Button4_Click()
   Brands.ShowModal
   
 
+End
+
+Public Sub ComboBox1_Click()
+Dim r As Result
+Dim t As String
+
+t = ComboBox1.Current.Text
+  If t = "All" Then
+    r = Global.DBconn.Find("stock")
+  Else 
+  r = Global.DBconn.Find("stock", "type = &1", t)
+  Endif 
+  UpdateGrid(r)
+  
+
+End
+
+Public Sub Brand_Combo_Change()
+
+' Dim r As Result
+' Dim t As String
+' 
+' t = Brand_Combo.Current.Text
+'   If t = "All" Then
+'     r = Global.DBconn.Find("brands")
+'   Else 
+'   r = Global.DBconn.Find("stock", "man = &1", t)
+'   Endif 
+'   UpdateGrid(r)
+
+End
+
+Public Sub Brand_Combo_Click()
+Dim r As Result
+Dim t As String
+
+t = Brand_Combo.Current.Text
+  If t = "All" Then
+    r = Global.DBconn.Find("brands")
+  Else 
+  r = Global.DBconn.Find("stock", "man = &1", t)
+  Endif 
+  UpdateGrid(r)
 End

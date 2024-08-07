@@ -39,7 +39,7 @@
     Text = ("Category")
   }
   { ComboBox1 ComboBox
-    MoveScaled(44,2,37,4)
+    MoveScaled(44,2,26,4)
     Font = Font["+2"]
     Background = &HE0E0E0
     Foreground = &H202020
@@ -51,12 +51,14 @@
     Text = ("Search")
   }
   { TextBox1 TextBox
-    MoveScaled(96,2,68,4)
+    MoveScaled(145,2,68,4)
+    Font = Font["+2"]
     Background = &HE0E0E0
     Foreground = &H202020
   }
   { Label3 Label
-    MoveScaled(83,2,12,4)
+    MoveScaled(131,2,12,4)
+    Font = Font["+2"]
     Foreground = &HC0C0C0
     Text = ("Description")
   }
@@ -81,5 +83,16 @@
     Background = &HE0E0E0
     Foreground = &H202020
     Text = ("Brands")
+  }
+  { Label4 Label
+    MoveScaled(78,2,9,4)
+    Font = Font["+2"]
+    Foreground = &HE0E0E0
+    Alignment = Align.Center
+    Text = ("Brand")
+  }
+  { Brand_Combo ComboBox
+    MoveScaled(88,2,35,4)
+    Font = Font["+2"]
   }
 }
