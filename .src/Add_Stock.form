@@ -69,6 +69,7 @@
       }
       { SpinBox1 SpinBox
         MoveScaled(10,1,14,5)
+        MaxValue = 10000
       }
     }
     { Panel4 Panel
