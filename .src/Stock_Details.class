@@ -1,0 +1,23 @@
+' Gambas class file
+
+
+Public Sub Panel1_MouseDown()
+
+  
+
+End
+
+Public Sub Form_Show()
+
+  Dim res As Result
+  res = Global.DBconn.Find("stock", "id = &1", GBStock.Selected_Stock)
+  Label1.Text = res!man
+  Label2.Text = res!descrip
+  Label3.Text = res!part
+  Label4.Text = res!amount
+  ' MinVB.Value = Int(r!min)
+  ' MaxVB.Value = Int(r!max)
+  ' ResVB.Value = Int(r!reserve)
+  ' PictureBox1.Picture = Global.Scale_Picture(Load_picture(r!image), PictureBox1.Width, PictureBox1.Height, True)
+
+End

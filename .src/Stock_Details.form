@@ -1,0 +1,33 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,131,83)
+  { Panel1 Panel
+    MoveScaled(1,1,129,81)
+    { Panel2 Panel
+      MoveScaled(1,1,42,41)
+      { PictureBox1 PictureBox
+        MoveScaled(3,3,35,33)
+      }
+    }
+    { Panel3 Panel
+      MoveScaled(44,1,83,41)
+      { Label1 Label
+        MoveScaled(1,2,80,5)
+        Border = Border.Plain
+      }
+      { Label2 Label
+        MoveScaled(1,9,81,5)
+        Border = Border.Plain
+      }
+      { Label3 Label
+        MoveScaled(1,16,81,5)
+        Border = Border.Plain
+      }
+      { Label4 Label
+        MoveScaled(1,23,81,5)
+        Border = Border.Plain
+      }
+    }
+  }
+}
