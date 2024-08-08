@@ -18,7 +18,7 @@ Endif
 
 res!type = ComboBox1.Current.Text
 res!man = ComboBox4.Text
-res!descrip = TextArea1.Text
+res!descrip = TextBox2.Text
 res!amount = SpinBox1.Value
 res!min = ValueBox2.Value
 res!max = ValueBox3.Value
@@ -95,7 +95,7 @@ End
 
 Public Sub Button1_Click()
 
-  TextArea1.Text = TextArea1.Text & String.Chr(178)
+  Textbox2.Text = Textbox2.Text & String.Chr(178)
   
 
 End
@@ -120,7 +120,7 @@ Public Sub Fill_Fields()
   res = Global.DBconn.Find("stock", "id = &1", GBStock.Selected_Stock)
   ComboBox1.Current.Text = res!type
   ComboBox4.Text = res!man
-  TextArea1.Text = res!descrip
+  Textbox2.Text = res!descrip
   SpinBox1.Value = res!amount
   ValueBox2.Value = res!min
   ValueBox3.Value = res!max

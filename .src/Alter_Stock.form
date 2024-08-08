@@ -123,10 +123,6 @@
         MoveScaled(13,2,31,4)
       }
     }
-    { TextArea1 TextArea
-      MoveScaled(14,14,31,5)
-      Wrap = True
-    }
     { Button1 Button
       MoveScaled(14,20,4,3)
     }
@@ -154,6 +150,9 @@
     { Button4 Button
       MoveScaled(46,14,4,5)
       Picture = Picture["icon:/medium/added"]
+    }
+    { TextBox2 TextBox
+      MoveScaled(14,14,31,5)
     }
   }
 }

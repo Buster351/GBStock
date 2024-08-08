@@ -35,6 +35,8 @@ With GridView1
   .Columns[5].Alignment = Align.Center
   .Columns[6].Title = "Min Stock"
   .Columns[6].Alignment = Align.Center
+  .Columns[7].Title = "Location"
+  .Columns[7].Alignment = Align.Center
   .Columns[8].Title = "Part Number"
   .Columns[8].Alignment = Align.Center
 'GridView1[0, 0].Text = "0,0"
@@ -78,6 +80,9 @@ Public Sub UpdateGrid(res As Result)
       ' Else 
       '   Action_req = False
       Endif
+      
+      GridView1[res.Index, 7].text = res!locid
+      
       GridView1[res.Index, 6].RichText = Global.ToRichtext(res!min, 1)
       If Int(res!reserve) > 0 Then
         GridView1[res.Index, 4].Foreground = Color.Yellow
