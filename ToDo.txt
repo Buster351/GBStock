@@ -1,0 +1,6 @@
+
+make a details form for stock item
+add delete item
+fix bugs
+add multiable reserves for items
+make db list of locations
