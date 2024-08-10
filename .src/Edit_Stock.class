@@ -16,7 +16,7 @@ Public Sub Form_Show()
   MinVB.Value = Int(r!min)
   MaxVB.Value = Int(r!max)
   ResVB.Value = Int(r!reserve)
-  PictureBox1.Picture = Global.Scale_Picture(Load_picture(r!image), PictureBox1.Width, PictureBox1.Height, True)
+  PictureBox1.Picture = Global.Scale_Picture(Global.Load_picture(r!image), PictureBox1.Width, PictureBox1.Height, True)
 End
 
 Public Sub FillComboBox(type As String)
@@ -29,15 +29,7 @@ Public Sub FillComboBox(type As String)
   TypeCB.Index = TypeCB.Find(type)
 End
 
-Public Function Load_picture(res As String) As Picture
-  Dim p As Picture
-  If Len(res) <> 0 Then
-    p = Picture.FromString(res)
-  Endif
-  
-  Return p
-  
-End
+
 
 Public Sub Button1_Click()
 

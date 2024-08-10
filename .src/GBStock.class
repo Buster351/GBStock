@@ -109,26 +109,33 @@ Dim r As Result
 End
 
 Public Sub Form_Show()
-
   Dim r As Result
   
 Me.Text = "GBStock " & Application.Version
-snd = Sound.Load(Application.Path & "/" & "warning.mp3")
 
+'connect to database so we can access it
 Global.Connect_database()
 
-r = Global.DBconn.Find("stock")
-
-SetUpGrid()  
-UpdateGrid(r)
-FillComboBox
+Global.FillCombo(ComboBox1, "types") ' fix this to use the global vertion
 Global.FillCombo(Brand_Combo, "brands")
+
+snd = Sound.Load(Application.Path & "/" & "warning.mp3")
+
+
+r = Global.DBconn.Find("stock")
+'setup grid after getting stock so we know how many rows there are
+SetUpGrid()
+' fill the grid  
+UpdateGrid(r)
+
 End
 
 Public Sub GridView1_Select()
 
 
   Button2.Enabled = True
+  Button5.Enabled = True
+  Button6.Enabled = True
   Selected_Stock = Val(GridView1[GridView1.Row, 0].Text)
   'Print Selected_Stock
   
@@ -210,6 +217,7 @@ End
 Public Sub ComboBox1_Click()
 Dim r As Result
 Dim t As String
+If Global.IgnoreEvents Then Return 
 
 t = ComboBox1.Current.Text
   If t = "All" Then
@@ -240,6 +248,7 @@ End
 Public Sub Brand_Combo_Click()
 Dim r As Result
 Dim t As String
+If Global.IgnoreEvents Then Return 
 
 t = Brand_Combo.Current.Text
   If t = "All" Then
@@ -248,4 +257,41 @@ t = Brand_Combo.Current.Text
   r = Global.DBconn.Find("stock", "man = &1", t)
   Endif 
   UpdateGrid(r)
+End
+
+Public Sub Button5_Click()
+
+  Stock_Details.ShowModal
+  
+
+End
+
+Public Sub TextBox1_KeyPress()
+
+  
+
+End
+
+Public Sub TextBox1_Change()
+Dim res As Result
+  If Len(TextBox1.Text) >= 3 Then
+    res = Global.SearchFor(TextBox1.Text, "stock")
+    UpdateGrid(res)
+  Endif
+
+
+End
+
+Public Sub Button6_Click()
+Dim res As Result
+  If Message.Warning("Are you sure", "Yes", "No") = 1 Then 
+    Print ("deleted")
+    global.DBconn.Delete("stock", "id = &1", GBStock.Selected_Stock)
+    'res = Global.DBconn.Find("stock", "id = &1", GBStock.Selected_Stock)
+    Button6.Enabled = False
+    res = global.DBconn.Find("stock")
+    UpdateGrid(res)
+    
+  Endif
+
 End

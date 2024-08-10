@@ -4,7 +4,7 @@
 Public IsEdit As Boolean 
 Public DateCF As Date
 Public DBconn As New Connection
-
+Public IgnoreEvents As Boolean = False
 
 Public Sub Connect_database()
   DBconn.Type = "sqlite3"
@@ -233,7 +233,7 @@ Public Function Get_Types(cb As ComboBox)
   cb.Clear
   cb.Add("All")
   For Each res
-    cb.Add(res!type)
+    cb.Add(res!item)
   Next
   cb.Index = 0
 End
@@ -256,21 +256,51 @@ End
 
 Public Function ToRichtext(text As String, size As Integer) As String
   Dim new_text As String
-  
-  
+    
   new_text = "<h3>" & text & " </h3>"  
   'new_text = "<b> Hello World </b>"
   Return new_text  
 End
 
 Public Sub FillCombo(combo As ComboBox, table As String)
-  
   Dim res As Result
+  'disable so we dont get events
+  IgnoreEvents = True
   res = Global.DBconn.Find(table)
   combo.Clear
+  combo.Add("All")
   For Each res
-    combo.Add(res!brand)
+    combo.Add(res!item)
   Next
   combo.Index = 0
+  'now reenable 
+  
+  IgnoreEvents = False
+  
+  
+  
+End
+
+Public Function Load_picture(res As String) As Picture
+  Dim p As Picture
+  
+  If Len(res) <> 0 Then
+    p = Picture.FromString(res)
+  Endif
+  
+  Return p
+  
+End
+
+Public Function SearchFor(stext As String, table As String) As Result
+  
+  Dim res As Result
+  Dim query As String
+  
+  query = "descrip LIKE '%" & Replace(stext, "'", "''") & "%'"
+  res = DBconn.Find(table, query)
+  
+  Return res
+  
   
 End

@@ -11,13 +11,22 @@ Public Sub Form_Show()
 
   Dim res As Result
   res = Global.DBconn.Find("stock", "id = &1", GBStock.Selected_Stock)
-  Label1.Text = res!man
-  Label2.Text = res!descrip
-  Label3.Text = res!part
-  Label4.Text = res!amount
-  ' MinVB.Value = Int(r!min)
-  ' MaxVB.Value = Int(r!max)
+  Label1.Text = "Brand :- " & res!man
+  Label2.Text = "Discription :- " & res!descrip
+  Label3.Text = "Part No :- " & res!part
+  Label4.Text = "Stock :- " & res!amount
+  Label5.text = "Minimum Stock :- " & res!min
+  Label6.Text = "Maximum Stock :- " & res!max
+  Label7.Text = "Location :- " & res!locid
+  Label8.Text = "Type :- " & res!type
   ' ResVB.Value = Int(r!reserve)
-  ' PictureBox1.Picture = Global.Scale_Picture(Load_picture(r!image), PictureBox1.Width, PictureBox1.Height, True)
+   PictureBox1.Picture = Global.Scale_Picture(Global.Load_picture(res!image), PictureBox1.Width, PictureBox1.Height, True)
+
+End
+
+Public Sub Button1_Click()
+
+  Me.Close
+  
 
 End

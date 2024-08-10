@@ -28,6 +28,22 @@
         MoveScaled(1,23,81,5)
         Border = Border.Plain
       }
+      { Label5 Label
+        MoveScaled(1,29,39,5)
+      }
+      { Label6 Label
+        MoveScaled(42,29,39,5)
+      }
+      { Label7 Label
+        MoveScaled(2,35,29,3)
+      }
+      { Label8 Label
+        MoveScaled(40,34,41,5)
+      }
+    }
+    { Button1 Button
+      MoveScaled(118,74,7,5)
+      Text = ("OK")
     }
   }
 }

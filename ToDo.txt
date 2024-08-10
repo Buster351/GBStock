@@ -1,6 +1,8 @@
 
-make a details form for stock item
-add delete item
-fix bugs
+▷make a details form for stock item
+▶add delete item
+▷fix bugs
 add multiable reserves for items
 make db list of locations
+▶finish search by discription
+Add the ability to make a required stock report

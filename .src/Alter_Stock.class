@@ -63,7 +63,7 @@ Public Sub FillComboBox()
   res = Global.DBconn.Find("types")
   ComboBox1.Clear
   For Each res
-    ComboBox1.Add(res!type)
+    ComboBox1.Add(res!item)
   Next
   ComboBox1.Index = 0
 End

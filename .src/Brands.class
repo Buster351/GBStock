@@ -16,7 +16,7 @@ res = Global.DBconn.Find("brands")
   
     For Each res
       GridView1[res.Index, 0].Text = res!id
-      GridView1[res.Index, 1].Text = res!brand
+      GridView1[res.Index, 1].Text = res!item
     Next
 End
 
@@ -35,7 +35,7 @@ End
 Public Sub Button1_Click()
 Dim res As Result
   res = Global.DBconn.Create("brands")
-  res!brand = TextBox1.Text
+  res!item = TextBox1.Text
   res!date = Now
   res.Update
   Global.DBconn.Commit
@@ -46,6 +46,6 @@ Dim res As Result
   
     For Each res
       GridView1[res.Index, 0].Text = res!id
-      GridView1[res.Index, 1].Text = res!brand
+      GridView1[res.Index, 1].Text = res!item
     Next
 End

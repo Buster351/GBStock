@@ -57,9 +57,10 @@
     Foreground = &H202020
   }
   { Label3 Label
-    MoveScaled(131,2,12,4)
+    MoveScaled(128,2,16,4)
     Font = Font["+2"]
     Foreground = &HC0C0C0
+    Alignment = Align.Right
     Text = ("Description")
   }
   { Button3 Button
@@ -68,14 +69,6 @@
     Background = &HE0E0E0
     Foreground = &H202020
     Text = ("Category")
-  }
-  { PictureBox1 PictureBox
-    MoveScaled(6,34,7,8)
-    Visible = False
-    Picture = Picture.Load("icon:/huge/warning")
-  }
-  { SwitchButton1 SwitchButton
-    MoveScaled(5,43,8,4)
   }
   { Button4 Button
     MoveScaled(2,25,15,4)
@@ -94,5 +87,41 @@
   { Brand_Combo ComboBox
     MoveScaled(88,2,35,4)
     Font = Font["+2"]
+    Background = &H404040
+    Foreground = &HE0E0E0
+  }
+  { Button5 Button
+    MoveScaled(2,31,15,4)
+    Enabled = False
+    Font = Font["+2"]
+    Background = &HE0E0E0
+    Foreground = &H202020
+    Text = ("Details")
+  }
+  { Panel1 Panel
+    MoveScaled(1,54,17,19)
+    Border = Border.Plain
+    { Panel2 Panel
+      MoveScaled(0,0,17,19)
+      Border = Border.Plain
+      { SwitchButton1 SwitchButton
+        MoveScaled(4,12,8,3)
+      }
+      { PictureBox1 PictureBox
+        MoveScaled(5,2,7,6)
+        Visible = False
+        Picture = Picture.Load("icon:/large/warning")
+        Stretch = True
+        Alignment = Align.Center
+      }
+    }
+  }
+  { Button6 Button
+    MoveScaled(2,37,15,4)
+    Enabled = False
+    Font = Font["+2"]
+    Background = &HE0E0E0
+    Foreground = &H202020
+    Text = ("Delete")
   }
 }
