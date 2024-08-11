@@ -17,7 +17,7 @@
         Border = Border.Plain
       }
       { Label2 Label
-        MoveScaled(1,9,81,5)
+        MoveScaled(1,9,74,5)
         Border = Border.Plain
       }
       { Label3 Label
@@ -39,6 +39,11 @@
       }
       { Label8 Label
         MoveScaled(40,34,41,5)
+      }
+      { Button2 Button
+        MoveScaled(76,9,5,5)
+        ToolTip = ("Copy to Clipboard")
+        Picture = Picture["icon:/large/copy"]
       }
     }
     { Button1 Button

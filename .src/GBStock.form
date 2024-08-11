@@ -105,10 +105,10 @@
       MoveScaled(0,0,17,19)
       Border = Border.Plain
       { SwitchButton1 SwitchButton
-        MoveScaled(4,12,8,3)
+        MoveScaled(4,13,9.1429,3)
       }
       { PictureBox1 PictureBox
-        MoveScaled(5,2,7,6)
+        MoveScaled(4,2,9.1429,9.1429)
         Visible = False
         Picture = Picture.Load("icon:/large/warning")
         Stretch = True

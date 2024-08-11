@@ -30,3 +30,10 @@ Public Sub Button1_Click()
   
 
 End
+
+Public Sub Button2_Click()
+Dim res As Result
+  res = Global.DBconn.Find("stock", "id = &1", GBStock.Selected_Stock)
+  Clipboard.Copy(res!descrip)
+
+End

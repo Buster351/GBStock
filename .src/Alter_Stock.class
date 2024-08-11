@@ -49,7 +49,8 @@ Public Sub Form_Show()
 Me.Title = "Add Stock"
 FillComboBox()
 Global.FillCombo(ComboBox4, "brands")
-
+FileChooser1.Dir = User.Home & "/Pictures"
+FileChooser1.View = FileView.Preview
 If Global.IsEdit Then 
   Fill_Fields()
   Me.Title = "Edit Stock"   
@@ -143,3 +144,9 @@ Public Function Load_picture(res As String) As Picture
   
   Return p
 End 
+
+Public Sub Button4_Click()
+
+  Clipboard.Copy(TextBox2.Text)
+
+End

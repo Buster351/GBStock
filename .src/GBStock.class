@@ -295,3 +295,16 @@ Dim res As Result
   Endif
 
 End
+
+Public Sub GridView1_DblClick()
+
+  Dim r As Result
+  Global.IsEdit = True
+  
+  Alter_Stock.ShowModal()
+  
+  Button2.Enabled = False
+  r = Global.DBconn.Find("stock")
+  UpdateGrid(r)
+
+End

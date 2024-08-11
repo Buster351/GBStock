@@ -53,6 +53,7 @@
     }
     { FileChooser1 FileChooser
       MoveScaled(81,3,68,74)
+      View = FileView.Preview
       ShowFile = False
       ReadOnly = True
     }
@@ -149,7 +150,8 @@
     }
     { Button4 Button
       MoveScaled(46,14,4,5)
-      Picture = Picture["icon:/medium/added"]
+      ToolTip = ("Copy To Clipboard")
+      Picture = Picture["icon:/large/copy"]
     }
     { TextBox2 TextBox
       MoveScaled(14,14,31,5)
