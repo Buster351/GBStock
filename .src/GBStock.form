@@ -124,4 +124,12 @@
     Foreground = &H202020
     Text = ("Delete")
   }
+  { Button7 Button
+    MoveScaled(2,43,15,4)
+    Enabled = False
+    Font = Font["+1"]
+    Background = &HE0E0E0
+    Foreground = &H202020
+    Text = ("Stock Report")
+  }
 }
