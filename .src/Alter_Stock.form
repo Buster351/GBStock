@@ -43,7 +43,7 @@
       MoveScaled(14,4,31,4)
     }
     { TextBox1 TextBox
-      MoveScaled(49,55,32,4)
+      MoveScaled(50,73,28,4)
     }
     { PictureBox1 PictureBox
       MoveScaled(2,40,46,37.1429)
@@ -69,7 +69,7 @@
         Text = ("Amount")
       }
       { SpinBox1 SpinBox
-        MoveScaled(10,1,14,5)
+        MoveScaled(13,1,14,5)
         MaxValue = 10000
       }
     }
@@ -81,7 +81,7 @@
         Text = ("MIn Stock")
       }
       { ValueBox2 ValueBox
-        MoveScaled(17,1,9,4)
+        MoveScaled(13,1,14,5)
       }
     }
     { Panel5 Panel
@@ -128,7 +128,7 @@
       MoveScaled(14,20,4,3)
     }
     { Panel8 Panel
-      MoveScaled(51,41,28,7)
+      MoveScaled(51,40,28,7)
       { Label11 Label
         MoveScaled(1,1,9,4)
         Text = ("Location")
@@ -155,6 +155,17 @@
     }
     { TextBox2 TextBox
       MoveScaled(14,14,31,5)
+    }
+    { Panel9 Panel
+      MoveScaled(51,48,28,7)
+      { Label12 Label
+        MoveScaled(1,1,15,5)
+        Text = ("Reorder Quantiy")
+      }
+      { SpinBox2 SpinBox
+        MoveScaled(17,1,10,5)
+        MaxValue = 100000
+      }
     }
   }
 }
