@@ -1,0 +1,96 @@
+# Gambas Form File 3.0
+
+{ Report Report
+  #MoveScaled(0,0,117,95)
+  Padding = ReportPadding["Top:2cm;Bottom:2cm;Left:2cm;Right:2cm"]
+  Count = 1
+  Index = 0
+  Text = ("Section 1")
+  { ReportHBox2 ReportHBox
+    #MoveScaled(1,1,115,9)
+    Height = "15mm"
+    Border = ReportBorder["Top:1mm #7F7F7F;Bottom:1mm #7F7F7F;Left:1mm #7F7F7F;Right:1mm #7F7F7F;TopLeftCorner:5mm;TopRightCorner:5mm;BottomRightCorner:5mm;BottomLeftCorner:5mm"]
+    BoxShadow = ReportBoxShadow["1mm 1mm 2px 0px #C2C2C2"]
+    { ReportLabel7 ReportLabel
+      #MoveScaled(1,1,53,7)
+      Brush = ReportBrush["#0068D0"]
+      Font = Font["Sans Serif,Bold,+2"]
+      Expand = True
+      AutoResize = True
+      Background = ReportBrush["#C0C0C0"]
+      Text = ("STOCK REPORT")
+      Alignment = Align.Center
+    }
+  }
+  { ReportHBox3 ReportHBox
+    #MoveScaled(1,10,115,2)
+    Height = "5mm"
+  }
+  { ReportHBox1 ReportHBox
+    #MoveScaled(1,12,115,6)
+    Height = "1cm"
+    Fixed = True
+    Border = ReportBorder["Top:2px #000000;Bottom:2px #000000;Left:2px #000000;Right:2px #000000;TopLeftCorner:2mm;TopRightCorner:2mm"]
+    { ReportLabel1 ReportLabel
+      #MoveScaled(1,1,16,4)
+      Width = "65mm"
+      Font = Font["Bold"]
+      Padding = ReportPadding["Top:2mm;Bottom:2mm;Left:2mm;Right:2mm"]
+      Background = ReportBrush["#E0E0E0"]
+      Text = ("Description")
+      Alignment = Align.Center
+    }
+    { ReportLabel2 ReportLabel
+      #MoveScaled(17,1,18,4)
+      Width = "65mm"
+      Font = Font["Bold"]
+      Padding = ReportPadding["Top:2mm;Bottom:2mm;Left:2mm;Right:2mm"]
+      Border = ReportBorder["Left:2px #000000;Right:2px #000000"]
+      Background = ReportBrush["#E0E0E0"]
+      Text = ("Partnumbar")
+      Alignment = Align.Center
+    }
+    { ReportLabel3 ReportLabel
+      #MoveScaled(35,1,19,4)
+      Brush = ReportBrush["#000000"]
+      Font = Font["Bold"]
+      Expand = True
+      Background = ReportBrush["#E0E0E0"]
+      Text = ("Stock Amount")
+      Alignment = Align.Center
+    }
+  }
+  { TableLine ReportHBox
+    #MoveScaled(1,18,115,4)
+    Height = "1cm"
+    Border = ReportBorder["Bottom:2px #000000;Left:2px #000000;Right:2px #000000"]
+    { ReportLabel4 ReportLabel
+      #MoveScaled(1,1,17,2)
+      Width = "65mm"
+      Padding = ReportPadding["Top:2mm;Bottom:2mm;Left:2mm;Right:2mm"]
+    }
+    { ReportLabel5 ReportLabel
+      #MoveScaled(18,1,20,2)
+      Width = "65mm"
+      Padding = ReportPadding["Top:2mm;Bottom:2mm;Left:2mm;Right:2mm"]
+      Border = ReportBorder["Left:2px #000000;Right:2px #000000"]
+    }
+    { ReportLabel6 ReportLabel
+      #MoveScaled(38,1,15,2)
+      Expand = True
+      Alignment = Align.Center
+    }
+  }
+  { ReportVBox1 ReportVBox
+    #MoveScaled(1,22,115,4)
+    Expand = True
+  }
+  { ReportLabel8 ReportLabel
+    #MoveScaled(1,26,115,4)
+    Fixed = True
+    Padding = ReportPadding["Top:3mm"]
+    Text = ("=\"Report Test page \" & page & \" on \" & pages")
+    Alignment = Align.Center
+  }
+  Index = 0
+}

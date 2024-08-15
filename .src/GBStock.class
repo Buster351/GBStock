@@ -105,6 +105,8 @@ Dim r As Result
   Global.IsEdit = False
   Alter_Stock.ShowModal
   r = Global.DBconn.Find("stock")
+  Global.FillCombo(ComboBox1, "types") ' update in case they where changed
+  Global.FillCombo(Brand_Combo, "brands")
   UpdateGrid(r)
 End
 
@@ -307,4 +309,19 @@ Public Sub GridView1_DblClick()
   r = Global.DBconn.Find("stock")
   UpdateGrid(r)
 
+End
+Public Sub Types_Changed()
+  
+  
+  
+End
+
+Public Sub Button7_Click()
+Dim hReport As Report = New Report1
+
+  ' ' now you can indicate the path of the pdf file
+  ' hReport.Path = "/tmp/print-report.pdf"
+  hReport.Preview
+  ' ' and you can check if the path was changed by the user
+  ' Print hReport.Path
 End

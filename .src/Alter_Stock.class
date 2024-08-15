@@ -131,8 +131,11 @@ Public Sub Fill_Fields()
   ValueBox4.Value = res!reserve
   TextBox3.Text = res!part
   ValueBox5.Value = res!jobno
-  Location_Text.Text = res!locid 
-  SpinBox2.Value = res!reorder_qty
+  Location_Text.Text = res!locid
+  'required because some values where null
+  If res!reorder_qty <> Null
+    SpinBox2.Value = Int(res!reorder_qty)
+  Endif 
   
 If res!image <> Null Then
   PictureBox1.Picture = Global.Scale_Picture(Load_picture(res!image), PictureBox1.Width, PictureBox1.Height, True)

@@ -1,0 +1,35 @@
+' Gambas class file
+
+Private hResult As Result
+
+Public Sub Report_Open()
+
+  Report.Debug = True
+   hResult = Global.DBconn.Find("stock", "amount < min")
+   
+   TableLine.DataCount = hResult.Count
+
+End
+
+Public Sub ReportLabel4_Data(Index As Integer)
+
+  hResult.MoveTo(Index)
+  Last.data = hResult["descrip"]
+
+End
+
+Public Sub ReportLabel5_Data(Index As Integer)
+
+  hResult.MoveTo(Index)
+  Last.data = hResult["part"]
+
+End
+
+Public Sub ReportLabel6_Data(Index As Integer)
+
+  hResult.MoveTo(Index)
+  Last.data = hResult["amount"]
+
+End
+
+

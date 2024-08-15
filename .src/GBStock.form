@@ -87,8 +87,8 @@
   { Brand_Combo ComboBox
     MoveScaled(88,2,35,4)
     Font = Font["+2"]
-    Background = &H404040
-    Foreground = &HE0E0E0
+    Background = &HE0E0E0
+    Foreground = &H202020
   }
   { Button5 Button
     MoveScaled(2,31,15,4)
@@ -126,10 +126,10 @@
   }
   { Button7 Button
     MoveScaled(2,43,15,4)
-    Enabled = False
     Font = Font["+1"]
     Background = &HE0E0E0
     Foreground = &H202020
+    Expand = True
     Text = ("Stock Report")
   }
 }
