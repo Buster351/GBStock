@@ -30,7 +30,7 @@
     #MoveScaled(1,12,115,6)
     Height = "1cm"
     Fixed = True
-    Border = ReportBorder["Top:2px #000000;Bottom:2px #000000;Left:2px #000000;Right:2px #000000;TopLeftCorner:2mm;TopRightCorner:2mm"]
+    Border = ReportBorder["Top:2px #202020;Bottom:2px #202020;Left:2px #202020;Right:2px #202020;TopLeftCorner:2mm;TopRightCorner:2mm"]
     { ReportLabel1 ReportLabel
       #MoveScaled(1,1,16,4)
       Width = "65mm"
@@ -47,7 +47,7 @@
       Padding = ReportPadding["Top:2mm;Bottom:2mm;Left:2mm;Right:2mm"]
       Border = ReportBorder["Left:2px #000000;Right:2px #000000"]
       Background = ReportBrush["#E0E0E0"]
-      Text = ("Partnumbar")
+      Text = ("Part Number")
       Alignment = Align.Center
     }
     { ReportLabel3 ReportLabel
@@ -67,6 +67,7 @@
     { ReportLabel4 ReportLabel
       #MoveScaled(1,1,17,2)
       Width = "65mm"
+      Font = Font["-1"]
       Padding = ReportPadding["Top:2mm;Bottom:2mm;Left:2mm;Right:2mm"]
     }
     { ReportLabel5 ReportLabel

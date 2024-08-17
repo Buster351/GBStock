@@ -7,17 +7,17 @@
     Text = ("Category")
   }
   { TextBox1 TextBox
-    MoveScaled(13,3,42,5)
+    MoveScaled(11,3,42,5)
   }
   { Button1 Button
-    MoveScaled(13,9,7,4)
+    MoveScaled(54,3,7,5)
     Text = ("Add")
-  }
-  { TextArea1 TextArea
-    MoveScaled(2,16,53,34)
   }
   { Button3 Button
     MoveScaled(54,58,8,4)
     Text = ("Close")
+  }
+  { GridView1 GridView
+    MoveScaled(1,10,61,47)
   }
 }

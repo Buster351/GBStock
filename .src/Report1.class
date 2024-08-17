@@ -4,7 +4,7 @@ Private hResult As Result
 
 Public Sub Report_Open()
 
-  Report.Debug = True
+  'Report.Debug = True
    hResult = Global.DBconn.Find("stock", "amount < min")
    
    TableLine.DataCount = hResult.Count

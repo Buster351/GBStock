@@ -5,7 +5,7 @@
 add multiable reserves for items
 make db list of locations
 ▶finish search by discription
-▷Add the ability to make a required stock report
+▶▷Add the ability to make a required stock report
 ▶add copy to clipboard in item details for picture searching
 ▶add double click on gridview open selected item for edit
-fix edit stock combobox's not selecting the corret types **URGENT**
+▶fix edit stock combobox's not selecting the corret types **URGENT**
