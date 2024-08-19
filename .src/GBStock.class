@@ -325,3 +325,17 @@ Dim hReport As Report = New Report1
   ' ' and you can check if the path was changed by the user
   ' Print hReport.Path
 End
+
+Public Sub TextBox2_Change()
+
+  Dim res As Result
+  Dim query As String
+  
+  If Len(TextBox2.Text) >= 3 Then
+    query = "part LIKE '%" & Replace(TextBox2.Text, "'", "''") & "%'"
+  res = Global.DBconn.Find("stock", query)
+  
+  UpdateGrid(res)
+  Endif
+
+End

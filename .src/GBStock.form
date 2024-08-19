@@ -51,13 +51,13 @@
     Text = ("Search")
   }
   { TextBox1 TextBox
-    MoveScaled(145,2,68,4)
+    MoveScaled(138,2,29,4)
     Font = Font["+2"]
     Background = &HE0E0E0
     Foreground = &H202020
   }
   { Label3 Label
-    MoveScaled(128,2,16,4)
+    MoveScaled(119,2,16,4)
     Font = Font["+2"]
     Foreground = &HC0C0C0
     Alignment = Align.Right
@@ -78,14 +78,14 @@
     Text = ("Brands")
   }
   { Label4 Label
-    MoveScaled(78,2,9,4)
+    MoveScaled(72,2,9,4)
     Font = Font["+2"]
     Foreground = &HE0E0E0
     Alignment = Align.Center
     Text = ("Brand")
   }
   { Brand_Combo ComboBox
-    MoveScaled(88,2,35,4)
+    MoveScaled(82,2,35,4)
     Font = Font["+2"]
     Background = &HE0E0E0
     Foreground = &H202020
@@ -131,5 +131,15 @@
     Foreground = &H202020
     Expand = True
     Text = ("Stock Report")
+  }
+  { Label5 Label
+    MoveScaled(170,2,16,4)
+    Background = &HE0E0E0
+    Foreground = &H202020
+    BorderColor = &HE0E0E0
+    Text = ("Part Number")
+  }
+  { TextBox2 TextBox
+    MoveScaled(188,2,48,4)
   }
 }
