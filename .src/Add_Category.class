@@ -35,7 +35,7 @@ Public Sub Button1_Click()
 Dim res As Result
   
   res = Global.DBconn.Create("types")
-  res!type = Textbox1.Text
+  res!item = Textbox1.Text
   res.Update  
   Global.DBconn.Commit
   
