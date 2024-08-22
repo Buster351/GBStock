@@ -9,3 +9,9 @@ make db list of locations
 ▶add copy to clipboard in item details for picture searching
 ▶add double click on gridview open selected item for edit
 ▶fix edit stock combobox's not selecting the corret types **URGENT**
+
+Extend stock to incould new table products for items
+instead of it all being in stock so product has brandid,catagoryid,description,partnumber,image,etc
+then stock has productid,amount,etc
+
+this will then need add Product form
