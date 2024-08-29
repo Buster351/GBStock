@@ -304,3 +304,31 @@ Public Function SearchFor(stext As String, table As String) As Result
   
   
 End
+
+
+Public Function LoadCatagories(cb As ComboBox)
+  Dim res As Result
+  
+  res = DBconn.Find("types")
+  cb.Clear
+    
+  For Each res
+    cb.Add(res!item)
+  Next
+  cb.Index = 0
+   
+  
+End
+
+Public Function LoadBrands(cb As ComboBox)
+  
+  Dim res As Result
+  res = DBconn.Find("brands")
+  cb.Clear
+  
+  For Each res
+    cb.Add(res!item)
+  Next
+  cb.Index = 0
+End
+

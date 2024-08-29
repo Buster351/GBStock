@@ -211,7 +211,7 @@ End
 
 Public Sub Button4_Click()
 
-  Brands.ShowModal
+  Add_Brand.ShowModal
   
 
 End
@@ -337,5 +337,12 @@ Public Sub TextBox2_Change()
   
   UpdateGrid(res)
   Endif
+
+End
+
+Public Sub Button8_Click()
+
+  Add_Product.ShowModal
+  
 
 End

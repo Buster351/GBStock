@@ -143,4 +143,10 @@
     MoveScaled(180,2,22,4)
     Font = Font["+2"]
   }
+  { Button8 Button
+    MoveScaled(2,49,14,4)
+    Background = &HE0E0E0
+    Foreground = &H202020
+    Text = ("Add Product")
+  }
 }
