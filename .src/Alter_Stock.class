@@ -112,7 +112,7 @@ End
 
 Public Sub Button2_Click()
 
-  Brands.ShowModal
+  Add_Brand.ShowModal
   Global.FillCombo(ComboBox4, "brands")
   
 
