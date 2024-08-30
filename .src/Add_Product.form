@@ -16,7 +16,7 @@
     Index = 0
   }
   { Button2 Button
-    MoveScaled(87,56,6,4)
+    MoveScaled(88,56,6,4)
     Text = ("OK")
   }
   { TabPanel2 TabPanel
