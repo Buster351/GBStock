@@ -13,15 +13,15 @@
       MoveScaled(4,0,4,4)
       Expand = True
     }
-    { btnOK Button
-      MoveScaled(29,0,16,4)
-      Text = ("OK")
-      Default = True
-    }
     { btnCancel Button
-      MoveScaled(46,0,16,4)
+      MoveScaled(23,0,16,4)
       Text = ("Cancel")
       Cancel = True
+    }
+    { btnOK Button
+      MoveScaled(46,0,16,4)
+      Text = ("OK")
+      Default = True
     }
   }
   { Panel2 Panel
