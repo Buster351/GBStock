@@ -1,0 +1,26 @@
+' Gambas class file
+
+
+Public Sub Form_Show()
+
+  Dim res As Result
+  Dim brand As Result
+  Dim type As Result
+  
+  res = Global.DBconn.Find("products")
+  GridView1.Clear
+  GridView1.Columns.Count = 3
+  
+  GridView1.Rows.Count = res.Count
+      
+    For Each res
+      GridView1[res.Index, 0].Text = res!id
+      GridView1[res.Index, 1].text = res!partnum
+      type = Global.DBconn.Find("types", "id= &1", res!category)
+      If type.Available Then 
+      GridView1[res.Index, 2].Text = type!item
+      Endif 
+           
+    Next
+
+End

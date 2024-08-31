@@ -1,13 +1,13 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,157,91)
+  MoveScaled(0,0,157,97)
   Text = ("Add Stock")
   Resizable = False
   Spacing = True
   Margin = True
   { HBox1 HBox
-    MoveScaled(93,85,62,4)
+    MoveScaled(93,90,62,4)
     Spacing = True
     { Panel1 Panel
       MoveScaled(4,0,4,4)
@@ -25,41 +25,31 @@
     }
   }
   { Panel2 Panel
-    MoveScaled(2,2,151,80)
+    MoveScaled(2,2,151,87)
     Border = Border.Sunken
     { Label1 Label
-      MoveScaled(2,4,11,4)
+      MoveScaled(2,12,11,4)
       Text = ("Category")
     }
     { Label2 Label
-      MoveScaled(2,9,11,4)
+      MoveScaled(2,16,11,4)
       Text = ("Manufacturer")
     }
     { Label4 Label
-      MoveScaled(2,15,11,4)
+      MoveScaled(2,20,11,4)
       Text = ("Description")
     }
     { ComboBox1 ComboBox
-      MoveScaled(14,4,31,4)
+      MoveScaled(14,12,31,4)
     }
     { TextBox1 TextBox
       MoveScaled(50,73,28,4)
-    }
-    { PictureBox1 PictureBox
-      MoveScaled(2,40,46,37.1429)
-      Picture = Picture.Load("missing-product.jpg")
-      Stretch = True
-      Border = Border.Sunken
     }
     { FileChooser1 FileChooser
       MoveScaled(81,3,68,74)
       View = FileView.Preview
       ShowFile = False
       ReadOnly = True
-    }
-    { Label8 Label
-      MoveScaled(3,34,13,4)
-      Text = ("Image")
     }
     { Panel3 Panel
       MoveScaled(51,3,28,7)
@@ -114,7 +104,7 @@
       }
     }
     { Panel7 Panel
-      MoveScaled(3,25,45,8)
+      MoveScaled(4,29,45,8)
       Border = Border.Raised
       { Label10 Label
         MoveScaled(1,2,7,3)
@@ -125,7 +115,7 @@
       }
     }
     { Button1 Button
-      MoveScaled(14,20,4,3)
+      MoveScaled(14,24,4,3)
     }
     { Panel8 Panel
       MoveScaled(51,40,28,7)
@@ -138,23 +128,23 @@
       }
     }
     { ComboBox4 ComboBox
-      MoveScaled(14,9,31,4)
+      MoveScaled(14,17,31,4)
     }
     { Button2 Button
-      MoveScaled(46,9,4,4)
+      MoveScaled(46,14,4,4)
       Picture = Picture["icon:/medium/added"]
     }
     { Button3 Button
-      MoveScaled(46,4,4,4)
+      MoveScaled(46,9,4,4)
       Picture = Picture["icon:/medium/added"]
     }
     { Button4 Button
-      MoveScaled(46,14,4,5)
+      MoveScaled(46,19,4,5)
       ToolTip = ("Copy To Clipboard")
       Picture = Picture["icon:/large/copy"]
     }
     { TextBox2 TextBox
-      MoveScaled(14,14,31,5)
+      MoveScaled(14,20,31,5)
     }
     { Panel9 Panel
       MoveScaled(51,48,28,7)
@@ -166,6 +156,28 @@
         MoveScaled(17,1,10,5)
         MaxValue = 100000
       }
+    }
+    { TabPanel1 TabPanel
+      MoveScaled(4,38,46,42)
+      Index = 0
+      Text = ("Image")
+      { PictureBox1 PictureBox
+        MoveScaled(0,0,46,37)
+        Picture = Picture.Load("missing-product.jpg")
+        Stretch = True
+        Border = Border.Sunken
+      }
+      Index = 0
+    }
+    { TabPanel2 TabPanel
+      MoveScaled(2,2,46,10)
+      Index = 0
+      Text = ("Add Product To Stock")
+      { Button5 Button
+        MoveScaled(37,0,5,5)
+        Picture = Picture["icon:/medium/add"]
+      }
+      Index = 0
     }
   }
 }

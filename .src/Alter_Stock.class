@@ -158,3 +158,9 @@ Public Sub Button4_Click()
   Clipboard.Copy(TextBox2.Text)
 
 End
+
+Public Sub Button5_Click()
+
+  Products_List.ShowModal
+
+End

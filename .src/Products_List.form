@@ -1,0 +1,14 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,87,117)
+  { TabPanel1 TabPanel
+    MoveScaled(1,1,84,114)
+    Index = 0
+    Text = ("Products")
+    { GridView1 GridView
+      MoveScaled(1,2,82,105)
+    }
+    Index = 0
+  }
+}

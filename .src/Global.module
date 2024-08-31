@@ -332,3 +332,12 @@ Public Function LoadBrands(cb As ComboBox)
   cb.Index = 0
 End
 
+Public Function LoadPictureFile(filename As String) As String
+  Dim pic As String
+  Dim img As Picture
+  img = Picture.Load(filename)
+  pic = img.ToString("png", 100)
+  
+  Return pic
+    
+End

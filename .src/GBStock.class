@@ -346,3 +346,43 @@ Public Sub Button8_Click()
   
 
 End
+
+Public Sub Button9_Click()
+  ' Dim New_porduct As Result
+  ' 
+  ' Dim res As Result
+  ' Dim typ As Result
+  ' Dim brand_res As Result
+  ' Dim t As String
+  ' Dim s As String
+  ' 
+  ' res = Global.DBconn.Find("stock")
+  ' 
+  ' For Each res
+  '   s = res!type
+  '   
+  '   typ = Global.DBconn.Find("types", "item = &1", s)
+  '   If typ.Available Then 
+  '     Print typ!item & " ";
+  '   Else 
+  '   Print "-" & " ";    
+  '   Endif
+  ' 
+  '   brand_res = global.DBconn.Find("brands", "item = &1", res!man)
+  '   If brand_res.Available Then 
+  '     Print brand_res!item & " " & res!part
+  '   Else 
+  '     Print "-"   
+  '   Endif
+  '  New_porduct = Global.DBconn.Create("products")
+  '  
+  '  If typ.Available Then New_porduct!category = typ!id
+  '  If brand_res.Available Then New_porduct!brand = brand_res!id
+  '  If res!part Then New_porduct!partnum = res!part
+  '  New_porduct.Update
+  '  Global.DBconn.Commit
+  '   
+  ' Next
+  Products_List.ShowModal
+  
+End

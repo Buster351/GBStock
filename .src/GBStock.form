@@ -149,4 +149,10 @@
     Foreground = &H202020
     Text = ("Add Product")
   }
+  { Button9 Button
+    MoveScaled(2,76,14,5)
+    Font = Font["-3"]
+    Foreground = &HE0E0E0
+    Text = ("Save stock as product")
+  }
 }

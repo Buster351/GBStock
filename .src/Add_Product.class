@@ -1,5 +1,6 @@
 ' Gambas class file
 
+Public filename As String
 
 Public Sub Form_Show()
 
@@ -17,7 +18,19 @@ Public Sub Button1_Click()
 End
 
 Public Sub Button2_Click()
-
+Dim res As Result
+  res = Global.DBconn.Create("products")
+  res!category = ComboBox1.Selected
+  res!brand = ComboBox2.Selected
+  res!partnum = TextBox1.Text
+  res!description = TextArea1.Text
+  res!price = Val(TextBox2.Text)
+  res!markup = ValueBox1.Value
+  res!image = Global.LoadPictureFile(filename)
+  res!date = Now
+  res.Update
+  Global.DBconn.Commit
+  
   Me.Close
   
 
@@ -38,7 +51,11 @@ End
 
 Public Sub PictureBox1_DblClick()
 
-  Dialog.OpenFile
+  If Dialog.OpenFile() Then
+    Return 
+  Endif 
+  filename = Dialog.Path 
+  PictureBox1.Picture = Global.LoadScaled(filename, PictureBox1.Width, PictureBox1.Height, True)
   
 
 End
