@@ -379,6 +379,7 @@ Public Sub Button9_Click()
   '  If typ.Available Then New_porduct!category = typ!id
   '  If brand_res.Available Then New_porduct!brand = brand_res!id
   '  If res!part Then New_porduct!partnum = res!part
+  '  If res!descrip Then New_porduct!description = res!descrip
   '  New_porduct.Update
   '  Global.DBconn.Commit
   '   

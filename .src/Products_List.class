@@ -2,14 +2,37 @@
 
 
 Public Sub Form_Show()
+Dim res As Result
+res = Global.DBconn.Find("products")
+FillProductsGrid(res)  
 
-  Dim res As Result
+End
+
+Public Sub Button1_Click()
+
+  Me.Close
+  
+
+End
+
+Public Sub TextBox1_Change()
+Dim res As Result
+
+  If Len(TextBox1.text) > 2 Then 
+    res = Global.SearchForMulti(TextBox1.text, ["partnum", "description"], "products")
+    FillProductsGrid(res)
+  Endif
+End
+
+Public Sub FillProductsGrid(res As Result)
+  
+  'Dim res As Result
   Dim brand As Result
   Dim type As Result
   
-  res = Global.DBconn.Find("products")
+  
   GridView1.Clear
-  GridView1.Columns.Count = 3
+  GridView1.Columns.Count = 4
   
   GridView1.Rows.Count = res.Count
       
@@ -20,7 +43,7 @@ Public Sub Form_Show()
       If type.Available Then 
       GridView1[res.Index, 2].Text = type!item
       Endif 
-           
+      GridView1[res.Index, 3].text = res!description     
     Next
-
+  
 End

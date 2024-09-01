@@ -335,9 +335,66 @@ End
 Public Function LoadPictureFile(filename As String) As String
   Dim pic As String
   Dim img As Picture
+  If filename <> "" Then 
   img = Picture.Load(filename)
   pic = img.ToString("png", 100)
+  Endif 
   
   Return pic
     
 End
+Public Function SearchForMulti(stext As String, fields As String[], table As String) As Result
+  
+  Dim res As Result
+  Dim query As String
+  Dim conditions As String
+  Dim escapedText As String
+  Dim field As String
+  Dim i As Integer
+  
+  ' Escape single quotes in the search text to prevent SQL injection
+  escapedText = Replace(stext, "'", "''")
+  
+  ' Initialize conditions as an empty string
+  conditions = ""
+  
+  ' Loop through each field to build the conditions string
+  For i = 0 To fields.Max
+    field = fields[i]
+    If conditions <> "" Then
+      conditions &= " OR "
+    Endif
+    conditions &= field & " LIKE '%" & escapedText & "%'"
+  Next
+  
+  ' Combine all conditions into the final query
+  query = conditions
+  Print query
+  
+  ' Execute the query using the DBconn.Find method
+  res = DBconn.Find(table, query)
+  
+  Return res
+  
+End
+
+
+Public Function SearchFor2(stext As String, field As String, table As String) As Result
+  
+  Dim res As Result
+  Dim query As String
+  
+  ' Escape single quotes in the search text to prevent SQL injection
+  stext = Replace(stext, "'", "''")
+  
+  ' Build the query using the passed field name
+  query = field & " LIKE '%" & stext & "%'"
+  
+  ' Execute the query using the DBconn.Find method
+  res = DBconn.Find(table, query)
+  
+  Return res
+  
+End
+
+
