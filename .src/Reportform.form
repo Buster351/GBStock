@@ -1,0 +1,8 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,135,101)
+  { ReportView1 ReportView
+    MoveScaled(1,2,129,93)
+  }
+}

@@ -321,7 +321,8 @@ Dim hReport As Report = New Report1
 
   ' ' now you can indicate the path of the pdf file
   ' hReport.Path = "/tmp/print-report.pdf"
-  hReport.Preview
+  'hReport.Preview
+  Reportform.ShowModal
   ' ' and you can check if the path was changed by the user
   ' Print hReport.Path
 End

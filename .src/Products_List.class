@@ -3,6 +3,7 @@
 
 Public Sub Form_Show()
 Dim res As Result
+SetupProductsGrid
 res = Global.DBconn.Find("products")
 FillProductsGrid(res)  
 
@@ -41,9 +42,42 @@ Public Sub FillProductsGrid(res As Result)
       GridView1[res.Index, 1].text = res!partnum
       type = Global.DBconn.Find("types", "id= &1", res!category)
       If type.Available Then 
-      GridView1[res.Index, 2].Text = type!item
+      GridView1[res.Index, 3].Text = type!item
       Endif 
-      GridView1[res.Index, 3].text = res!description     
+      GridView1[res.Index, 2].text = res!description     
     Next
+  
+End
+
+Public Sub SetupProductsGrid()
+  
+GridView1.Columns.Count = 6
+GridView1.Columns[0].Alignment = Align.Justify
+GridView1.Columns[0].Title = "id"
+
+With GridView1
+  .Columns[1].Title = "Part Number"
+  .Columns[1].Width = 150
+  .Columns[1].Alignment = Align.Center
+  
+  .Columns[2].Width = 400
+  .Columns[2].Alignment = Align.Center
+  .Columns[2].Title = "Description"
+  
+  .Columns[3].Title = "Category"
+  .Columns[3].Alignment = Align.Center
+  .Columns[4].Title = "Reserved Stock"
+  .Columns[4].Alignment = Align.Center
+   .Columns[5].Title = "Description"
+   .Columns[5].Alignment = Align.Center
+  ' .Columns[6].Title = "Min Stock"
+  ' .Columns[6].Alignment = Align.Center
+  ' .Columns[7].Title = "Location"
+  ' .Columns[7].Alignment = Align.Center
+  ' .Columns[8].Title = "Part Number"
+  ' .Columns[8].Alignment = Align.Center
+'GridView1[0, 0].Text = "0,0"
+'GridView1[0, 0].Alignment = Align.Center
+End With 
   
 End

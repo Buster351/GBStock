@@ -1,0 +1,9 @@
+' Gambas class file
+
+
+Public Sub Form_Show()
+
+  ReportView1.Report = Report1
+  
+
+End
