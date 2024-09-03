@@ -18,6 +18,10 @@
     { TextBox1 TextBox
       MoveScaled(9,1,32,4)
     }
+    { ComboBox1 ComboBox
+      MoveScaled(42,1,18,4)
+      Text = ("Search By")
+    }
     Index = 0
   }
   { Button1 Button

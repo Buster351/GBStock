@@ -4,6 +4,7 @@
 Public Sub Form_Show()
 Dim res As Result
 SetupProductsGrid
+FillSearchCombo
 res = Global.DBconn.Find("products")
 FillProductsGrid(res)  
 
@@ -79,5 +80,14 @@ With GridView1
 'GridView1[0, 0].Text = "0,0"
 'GridView1[0, 0].Alignment = Align.Center
 End With 
+  
+End
+Public Sub FillSearchCombo()
+  
+  With ComboBox1
+    .Add("Description")
+    .Add("Part Number")
+    .Add("Catogory")
+  End With
   
 End

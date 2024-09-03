@@ -155,4 +155,7 @@
     Foreground = &HE0E0E0
     Text = ("Save stock as product")
   }
+  { Button10 Button
+    MoveScaled(2,84,14,5)
+  }
 }
