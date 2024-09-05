@@ -1,5 +1,8 @@
 ' Gambas class file
 
+Public category_id As Integer
+Public brand_id As Integer
+
 Public filename As String
 
 Public Sub Form_Show()
@@ -72,4 +75,11 @@ Public Sub Button4_Click()
   Me.Close
   
 
+End
+
+Public Function GetCategoryid(comb As ComboBox, text As String) As Integer
+  Dim res As Result
+  
+  
+  
 End

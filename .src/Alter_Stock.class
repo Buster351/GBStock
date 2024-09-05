@@ -16,14 +16,14 @@ Else
   res = Global.DBconn.Create("stock")
 Endif 
 
-res!type = ComboBox1.Current.Text
-res!man = ComboBox4.Text
-res!descrip = TextBox2.Text
+'res!type = ComboBox1.Current.Text
+'res!man = ComboBox4.Text
+'res!descrip = TextBox2.Text
 res!amount = SpinBox1.Value
 res!min = ValueBox2.Value
 res!max = ValueBox3.Value
 res!reserve = ValueBox4.Value
-res!part = TextBox3.Text
+'res!part = TextBox3.Text
 res!jobno = ValueBox5.Value
 res!locid = Location_Text.Text
 res!reorder_qty = SpinBox2.Value
@@ -49,8 +49,8 @@ End
 
 Public Sub Form_Show()
 Me.Title = "Add Stock"
-FillComboBox()
-Global.FillCombo(ComboBox4, "brands")
+'FillComboBox()
+'Global.FillCombo(ComboBox4, "brands")
 FileChooser1.Dir = User.Home & "/Pictures"
 FileChooser1.View = FileView.Preview
 If Global.IsEdit Then 
@@ -64,11 +64,11 @@ End
 Public Sub FillComboBox()
   Dim res As Result
   res = Global.DBconn.Find("types")
-  ComboBox1.Clear
+  'ComboBox1.Clear
   For Each res
-    ComboBox1.Add(res!item)
+    'ComboBox1.Add(res!item)
   Next
-  ComboBox1.Index = 0
+  'ComboBox1.Index = 0
 End
 
 Public Sub FileChooser1_Change()
@@ -92,13 +92,13 @@ End
 
 Public Sub Form_Open()
 
-  Button1.Text = String.Chr(178)
+  'Button1.Text = String.Chr(178)
 
 End
 
 Public Sub Button1_Click()
 
-  Textbox2.Text = Textbox2.Text & String.Chr(178)
+  'Textbox2.Text = Textbox2.Text & String.Chr(178)
   
 
 End
@@ -106,14 +106,14 @@ End
 Public Sub Button3_Click()
 
   Add_Category.ShowModal
-  Global.Get_Types(ComboBox1)
+  'Global.Get_Types(ComboBox1)
 
 End
 
 Public Sub Button2_Click()
 
   Add_Brand.ShowModal
-  Global.FillCombo(ComboBox4, "brands")
+  'Global.FillCombo(ComboBox4, "brands")
   
 
 End
@@ -122,14 +122,14 @@ Public Sub Fill_Fields()
   Dim res As Result
   res = Global.DBconn.Find("stock", "id = &1", GBStock.Selected_Stock)
   'ComboBox1.Current.Text = res!type
-  ComboBox1.Text = res!type
-  ComboBox4.Text = res!man
-  Textbox2.Text = res!descrip
+  'ComboBox1.Text = res!type
+  'ComboBox4.Text = res!man
+  'Textbox2.Text = res!descrip
   SpinBox1.Value = res!amount
   ValueBox2.Value = res!min
   ValueBox3.Value = res!max
   ValueBox4.Value = res!reserve
-  TextBox3.Text = res!part
+  'TextBox3.Text = res!part
   ValueBox5.Value = res!jobno
   Location_Text.Text = res!locid
   'required because some values where null
@@ -155,12 +155,32 @@ End
 
 Public Sub Button4_Click()
 
-  Clipboard.Copy(TextBox2.Text)
+  'Clipboard.Copy(TextBox2.Text)
 
 End
 
 Public Sub Button5_Click()
 
   Products_List.ShowModal
-
+  FillProductInfo()
+  
 End
+Public Sub FillProductInfo()
+  Dim product As Result
+  Dim brand As Result
+  Dim category As Result
+  
+  
+  product = Global.DBconn.Find("products", "id = &1", Global.selected_product_id)
+  brand = Global.DBconn.Find("brands", "id = &1", product!brand)
+  category = Global.DBconn.Find("types", "id = &1", product!category)
+  
+  Label8.text = category!item
+  If brand.Available Then Label13.Text = brand!item
+  Label14.text = product!description
+  Label15.Text = product!partnum
+  If product!image <> Null Then
+  PictureBox1.Picture = Global.Scale_Picture(Load_picture(product!image), PictureBox1.Width, PictureBox1.Height, True)
+Endif
+  End 
+  

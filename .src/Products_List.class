@@ -19,10 +19,22 @@ End
 
 Public Sub TextBox1_Change()
 Dim res As Result
-
-  If Len(TextBox1.text) > 2 Then 
-    res = Global.SearchForMulti(TextBox1.text, ["partnum", "description"], "products")
-    FillProductsGrid(res)
+  
+  If Len(TextBox1.text) > 2 Then
+    Select Case ComboBox1.Current.Text
+      Case "All"
+        res = Global.DBconn.Find("products")
+        FillProductsGrid(res)
+      Case "Description"
+        res = Global.SearchFor2(TextBox1.text, "description", "products")
+        FillProductsGrid(res)
+      Case "Part Number"
+        res = Global.SearchFor2(TextBox1.text, "partnum", "products")
+        FillProductsGrid(res)
+    End Select  
+   
+    'res = Global.SearchForMulti(TextBox1.text, ["partnum", "description"], "products")
+    'FillProductsGrid(res)
   Endif
 End
 
@@ -85,9 +97,20 @@ End
 Public Sub FillSearchCombo()
   
   With ComboBox1
+    .Add("All")
     .Add("Description")
     .Add("Part Number")
     .Add("Catogory")
+    .Index = 0
   End With
   
+End
+
+Public Sub GridView1_DblClick()
+
+  Global.selected_product_id = Val(GridView1[GridView1.Row, 0].Text)
+  Print Global.selected_product_id
+  Me.Close
+  
+
 End
