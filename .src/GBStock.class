@@ -26,8 +26,8 @@ With GridView1
   .Columns[2].Width = 400
   .Columns[2].Alignment = Align.Center
   .Columns[2].Title = "Description"
-  
-  .Columns[3].Title = "Real Stock"
+  .Columns[3].width = 200
+  .Columns[3].Title = "Part Number"
   .Columns[3].Alignment = Align.Center
   .Columns[4].Title = "Reserved Stock"
   .Columns[4].Alignment = Align.Center
@@ -65,7 +65,7 @@ Public Sub UpdateGrid(res As Result)
       GridView1[res.Index, 8].RichText = Global.ToRichtext(res!part, 1)
             
       'GridView1[res.Index, 1].Text = res!type
-      GridView1[res.Index, 2].Text = Global.WordWrap(res!descrip, 50)
+      
       If current_stock < 0 Then
         GridView1[res.Index, 3].Foreground = Color.Purple
         Action_req = True
@@ -128,7 +128,8 @@ r = Global.DBconn.Find("stock")
 'setup grid after getting stock so we know how many rows there are
 SetUpGrid()
 ' fill the grid  
-UpdateGrid(r)
+'UpdateGrid(r)
+ShowStock()
 
 End
 
@@ -386,5 +387,25 @@ Public Sub Button9_Click()
   '   
   ' Next
   Products_List.ShowModal
+  
+End
+
+Public Sub ShowStock()
+  Dim res As Result
+  Dim product As Result
+  
+  res = Global.DBconn.Find("stocks")
+  GridView1.Rows.Count = res.Count  
+  For Each res
+    GridView1[res.Index, 0].text = res!id
+    product = global.DBconn.Find("products", "id = &1", res!productid)
+    If product!image.Length <> 0 Then
+        GridView1.Rows[res.Index].Height = 100
+        GridView1[res.Index, 1].Picture = Global.Scale_Picture(Global.Get_Picture(product!image), 100, 100, True)
+      Endif
+    GridView1[res.Index, 2].Text = product!description
+    GridView1[res.Index, 3].Text = product!partnum
+  Next
+  
   
 End

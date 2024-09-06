@@ -97,7 +97,7 @@ End
 Public Sub FillSearchCombo()
   
   With ComboBox1
-    .Add("All")
+    '.Add("All")
     .Add("Description")
     .Add("Part Number")
     .Add("Catogory")
@@ -110,6 +110,19 @@ Public Sub GridView1_DblClick()
 
   Global.selected_product_id = Val(GridView1[GridView1.Row, 0].Text)
   Print Global.selected_product_id
+  Me.Close
+  
+
+End
+
+Public Sub Button2_Click()
+
+  Add_Product.ShowModal
+
+End
+
+Public Sub Button3_Click()
+
   Me.Close
   
 
