@@ -1,0 +1,88 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,84,66)
+  { TabPanel1 TabPanel
+    MoveScaled(0,0,43,13)
+    Index = 0
+    Text = ("Catagory")
+    { ComboBox1 ComboBox
+      MoveScaled(1,2,32,5)
+    }
+    { Button1 Button
+      MoveScaled(34,2,5,5)
+      Picture = Picture["icon:/24/add"]
+    }
+    Index = 0
+  }
+  { Button2 Button
+    MoveScaled(76,59,6,4)
+    Text = ("OK")
+  }
+  { TabPanel2 TabPanel
+    MoveScaled(0,14,43,13)
+    Index = 0
+    Text = ("Brand")
+    { ComboBox2 ComboBox
+      MoveScaled(1,2,32,5)
+    }
+    { Button3 Button
+      MoveScaled(34,2,5,5)
+      Picture = Picture["icon:/24/add"]
+    }
+    Index = 0
+  }
+  { TabPanel3 TabPanel
+    MoveScaled(0,29,43,12)
+    Index = 0
+    Text = ("Part Number")
+    { TextBox1 TextBox
+      MoveScaled(1,1,40,5)
+    }
+    Index = 0
+  }
+  { TabPanel4 TabPanel
+    MoveScaled(0,42,43,16)
+    Index = 0
+    Text = ("Description")
+    { TextArea1 TextArea
+      MoveScaled(1,1,39,9)
+    }
+    Index = 0
+  }
+  { TabPanel5 TabPanel
+    MoveScaled(48,0,34,11)
+    Index = 0
+    Text = ("Price")
+    { TextBox2 TextBox
+      MoveScaled(2,1,17,4)
+    }
+    Index = 0
+  }
+  { TabPanel6 TabPanel
+    MoveScaled(48,12,34,11)
+    Index = 0
+    Text = ("Markup")
+    { Slider1 Slider
+      MoveScaled(2,2,24,3)
+      Value = 20
+    }
+    { ValueBox1 ValueBox
+      MoveScaled(26,1,6,4)
+    }
+    Index = 0
+  }
+  { TabPanel7 TabPanel
+    MoveScaled(48,25,34,33)
+    Index = 0
+    Text = ("Image")
+    { PictureBox1 PictureBox
+      MoveScaled(1,2,31,25)
+    }
+    Index = 0
+  }
+  { Button4 Button
+    MoveScaled(63,59,10,4)
+    Text = ("Cancel")
+  }
+}

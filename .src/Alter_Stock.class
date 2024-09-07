@@ -11,27 +11,28 @@ End
 Public Sub btnOK_Click()
 Dim res As Result
 If Global.IsEdit Then 
-  res = Global.DBconn.Edit("stock", "id = &1", GBStock.Selected_Stock)
+  res = Global.DBconn.Edit("stocks", "id = &1", GBStock.Selected_Stock)
 Else 
-  res = Global.DBconn.Create("stock")
+  res = Global.DBconn.Create("stocks")
 Endif 
 
 'res!type = ComboBox1.Current.Text
 'res!man = ComboBox4.Text
 'res!descrip = TextBox2.Text
+res!productid = Global.selected_product_id
 res!amount = SpinBox1.Value
-res!min = ValueBox2.Value
-res!max = ValueBox3.Value
-res!reserve = ValueBox4.Value
+res!min = SpinBox3.Value
+res!max = SpinBox4.Value
+'res!reserve = ValueBox4.Value
 'res!part = TextBox3.Text
-res!jobno = ValueBox5.Value
-res!locid = Location_Text.Text
-res!reorder_qty = SpinBox2.Value
+'res!jobno = ValueBox5.Value
+res!locationid = Val(Location_Text.Text)
+'res!reorder_qty = SpinBox2.Value
 
-res!editdate = Now
-If PictureBox1.Picture <> Null Then
-  res!image = PictureBox1.Picture.ToString("png", 100)
-Endif
+res!date = Now
+'If PictureBox1.Picture <> Null Then
+ ' res!image = PictureBox1.Picture.ToString("png", 100)
+'Endif
   
 res.Update
 Global.DBconn.Commit()
@@ -51,8 +52,8 @@ Public Sub Form_Show()
 Me.Title = "Add Stock"
 'FillComboBox()
 'Global.FillCombo(ComboBox4, "brands")
-FileChooser1.Dir = User.Home & "/Pictures"
-FileChooser1.View = FileView.Preview
+' FileChooser1.Dir = User.Home & "/Pictures"
+' FileChooser1.View = FileView.Preview
 If Global.IsEdit Then 
   Fill_Fields()
   Me.Title = "Edit Stock"   
@@ -85,8 +86,8 @@ End
 
 Public Sub FileChooser1_Activate()
 Dim pic As Picture
-  pic = Picture.Load(FileChooser1.SelectedPath)
-  PictureBox1.Picture = Global.scale_Picture(pic, 260, 260, True)
+  ' pic = Picture.Load(FileChooser1.SelectedPath)
+  ' PictureBox1.Picture = Global.scale_Picture(pic, 260, 260, True)
 
 End
 
@@ -126,8 +127,8 @@ Public Sub Fill_Fields()
   'ComboBox4.Text = res!man
   'Textbox2.Text = res!descrip
   SpinBox1.Value = res!amount
-  ValueBox2.Value = res!min
-  ValueBox3.Value = res!max
+  SpinBox3.Value = res!min
+  SpinBox4.Value = res!max
   ValueBox4.Value = res!reserve
   'TextBox3.Text = res!part
   ValueBox5.Value = res!jobno

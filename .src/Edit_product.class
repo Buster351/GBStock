@@ -1,0 +1,74 @@
+' Gambas class file
+
+Public filename As String
+
+Public Sub Form_Show()
+
+  Dim res As Result
+  Dim cat As Result 
+  Dim brand As Result
+  
+  Global.FillCombo(ComboBox1, "types")
+  Global.FillCombo(ComboBox2, "brands")
+  
+  Print ComboBox1.Selected
+  res = Global.DBconn.Find("products", "id = &1", Global.selected_product_id)
+  cat = Global.DBconn.Find("types", "id = &1", res!category)
+  brand = Global.DBconn.Find("brands", "id = &1", res!brand)
+  Print res
+  Print cat
+  Print brand
+  ComboBox1.Text = cat!item
+  'ComboBox2.Text = brand!item
+  ComboBox2.Index = ComboBox2.List.Find(brand!item)
+  
+  TextBox1.Text = res!partnum
+  TextArea1.Text = res!description
+  TextBox2.Text = res!price
+  ValueBox1.Value = res!markup
+  If res!image <> Null Then
+    PictureBox1.Picture = Global.Scale_Picture(Global.Load_Picture_Blob(res!image), PictureBox1.Width, PictureBox1.Height, True)
+  Endif
+End
+
+Public Sub Button4_Click()
+
+  Me.Close
+  
+
+End
+
+Public Sub PictureBox1_DblClick()
+
+
+  If Dialog.OpenFile() Then
+    Return 
+  Endif 
+  filename = Dialog.Path 
+  PictureBox1.Picture = Global.LoadScaled(filename, PictureBox1.Width, PictureBox1.Height, True)
+
+End
+
+Public Sub Button2_Click()
+
+  Dim res As Result
+  Dim type As Result
+  Dim brand As Result
+  
+  res = Global.DBconn.Edit("products", "id = &1", Global.selected_product_id)
+  type = Global.DBconn.Find("types", "item = &1", ComboBox1.Current.text)
+  res!category = type!id
+  brand = Global.DBconn.Find("brands", "item = &1", ComboBox2.Current.Text)
+  res!brand = brand!id
+  
+  res!partnum = TextBox1.Text
+  res!description = TextArea1.Text
+  res!price = Val(TextBox2.Text)
+  res!markup = ValueBox1.Value
+  res!image = Global.LoadPictureFile(filename)
+  res!date = Now
+  res.Update
+  Global.DBconn.Commit
+  
+  Me.Close
+End

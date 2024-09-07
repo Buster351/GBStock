@@ -104,10 +104,11 @@ Public Sub Button1_Click()
 Dim r As Result
   Global.IsEdit = False
   Alter_Stock.ShowModal
-  r = Global.DBconn.Find("stock")
-  Global.FillCombo(ComboBox1, "types") ' update in case they where changed
-  Global.FillCombo(Brand_Combo, "brands")
-  UpdateGrid(r)
+  ShowStock()
+  'r = Global.DBconn.Find("stock")
+  'Global.FillCombo(ComboBox1, "types") ' update in case they where changed
+  'Global.FillCombo(Brand_Combo, "brands")
+  'UpdateGrid(r)
 End
 
 Public Sub Form_Show()

@@ -127,3 +127,18 @@ Public Sub Button3_Click()
   
 
 End
+
+Public Sub GridView1_Click()
+
+  Global.selected_product_id = Val(GridView1[GridView1.Row, 0].Text)
+  Button4.Enabled = True
+  Print Global.selected_product_id
+
+End
+
+Public Sub Button4_Click()
+
+  Edit_product.ShowModal
+  
+
+End

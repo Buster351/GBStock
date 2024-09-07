@@ -400,3 +400,10 @@ Public Function SearchFor2(stext As String, field As String, table As String) As
 End
 
 
+Public Function Load_Picture_Blob(res As String) As Picture
+  Dim p As Picture
+  If Len(res) <> 0 Then
+    p = Picture.FromString(res)
+  Endif
+  Return p
+End 

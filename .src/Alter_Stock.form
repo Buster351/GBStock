@@ -42,12 +42,6 @@
     { TextBox1 TextBox
       MoveScaled(50,73,28,4)
     }
-    { FileChooser1 FileChooser
-      MoveScaled(81,3,68,74)
-      View = FileView.Preview
-      ShowFile = False
-      ReadOnly = True
-    }
     { Panel3 Panel
       MoveScaled(51,3,28,7)
       Border = Border.Raised
@@ -64,22 +58,24 @@
       MoveScaled(51,11,28,7)
       Border = Border.Raised
       { Label5 Label
-        MoveScaled(2,1,11,4)
+        MoveScaled(1,2,9,4)
         Text = ("MIn Stock")
       }
-      { ValueBox2 ValueBox
+      { SpinBox3 SpinBox
         MoveScaled(13,1,14,5)
+        MaxValue = 10000
       }
     }
     { Panel5 Panel
-      MoveScaled(51,19,28,8)
+      MoveScaled(51,19,28,7.1429)
       Border = Border.Raised
       { Label6 Label
-        MoveScaled(2,2,11,4)
+        MoveScaled(1,2,9,4)
         Text = ("Max Stock")
       }
-      { ValueBox3 ValueBox
-        MoveScaled(17,2,9,4)
+      { SpinBox4 SpinBox
+        MoveScaled(13,1,14,5)
+        MaxValue = 10000
       }
     }
     { Panel6 Panel
@@ -133,7 +129,7 @@
       }
     }
     { TabPanel1 TabPanel
-      MoveScaled(4,38,46,42)
+      MoveScaled(2,35,46,42)
       Index = 0
       Text = ("Image")
       { PictureBox1 PictureBox
@@ -145,11 +141,11 @@
       Index = 0
     }
     { TabPanel2 TabPanel
-      MoveScaled(2,2,46,10)
+      MoveScaled(2,1,26,11)
       Index = 0
       Text = ("Add Product To Stock")
       { Button5 Button
-        MoveScaled(37,0,5,5)
+        MoveScaled(10,0.4286,5,5)
         Picture = Picture["icon:/medium/add"]
       }
       Index = 0

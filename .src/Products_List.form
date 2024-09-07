@@ -23,8 +23,15 @@
       Text = ("Search By")
     }
     { Button2 Button
-      MoveScaled(98,1,5,5)
+      MoveScaled(102,1,5,5)
+      ToolTip = ("Add Product")
       Picture = Picture["icon:/medium/added"]
+    }
+    { Button4 Button
+      MoveScaled(93,1,5,4)
+      Enabled = False
+      ToolTip = ("Edit Product")
+      Picture = Picture["icon:/large/edit"]
     }
     Index = 0
   }
