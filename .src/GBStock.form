@@ -29,7 +29,6 @@
   }
   { Timer1 #Timer
     #MoveScaled(1,96)
-    Enabled = True
     Delay = 30000
   }
   { Label1 Label

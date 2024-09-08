@@ -63,12 +63,8 @@
     MoveScaled(48,12,34,11)
     Index = 0
     Text = ("Markup")
-    { Slider1 Slider
-      MoveScaled(2,2,24,3)
-      Value = 20
-    }
-    { ValueBox1 ValueBox
-      MoveScaled(26,1,6,4)
+    { SliderBox1 SliderBox
+      MoveScaled(1,1,33,4)
     }
     Index = 0
   }
@@ -84,5 +80,8 @@
   { Button4 Button
     MoveScaled(63,59,10,4)
     Text = ("Cancel")
+  }
+  { Button5 Button
+    MoveScaled(44,34,3,6)
   }
 }

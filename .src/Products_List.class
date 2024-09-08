@@ -57,7 +57,12 @@ Public Sub FillProductsGrid(res As Result)
       If type.Available Then 
       GridView1[res.Index, 3].Text = type!item
       Endif 
-      GridView1[res.Index, 2].text = res!description     
+      GridView1[res.Index, 2].text = res!description 
+      If res!image.Length <> 0 Then
+        GridView1.Rows[res.Index].Height = 100
+        GridView1[res.Index, 1].Picture = Global.Scale_Picture(Global.Get_Picture(res!image), 100, 100, True)
+      Endif
+          
     Next
   
 End

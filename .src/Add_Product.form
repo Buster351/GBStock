@@ -85,4 +85,7 @@
     MoveScaled(65,61,10,4)
     Text = ("Cancel")
   }
+  { Button5 Button
+    MoveScaled(46,36,3,6)
+  }
 }

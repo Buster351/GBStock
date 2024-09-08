@@ -2,11 +2,13 @@
 Startup=GBStock
 Version=0.0.3
 Component=gb.image
-Component=gb.gui
+Component=gb.qt5
 Component=gb.form
 Component=gb.db
+Component=gb.desktop
 Component=gb.eval
 Component=gb.poppler
+Component=gb.qt5.webkit
 Component=gb.report2
 Component=gb.sdl2.audio
 TabSize=2

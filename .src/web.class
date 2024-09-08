@@ -1,0 +1,42 @@
+' Gambas class file
+
+Public Myurl As String
+
+
+Public Sub Form_Show()
+
+  'WebView1.Url = "https:\\google.com.au"
+  Print WebView1.Url
+  'https://www.google.com.au/imghp/search?q=
+  'TextBox1.Text = "https://www.google.com.au/imghp/search?q="    '"https://www.google.com/search?q="
+  Myurl = "https://www.google.com/search?tbm = isch&q="
+
+
+End
+
+Public Sub TextBox1_KeyPress()
+If Key.Code == Key.Return Then
+  WebView1.Url = Myurl & TextBox1.Text
+Endif 
+
+End
+
+Public Sub WebView1_Download(Download As WebDownload)
+
+Dialog.Title = "Save File"
+If Dialog.SaveFile() Then Return
+Print Download.Url
+Download.Path = Dialog.Path
+
+Print Download.Size
+
+Print Download.Url
+
+Print Download.Status
+If Download.Error == 1 Then
+  Message.Error(Download.ErrorText)
+Endif
+    'Catch
+    Print Error.Text
+
+End

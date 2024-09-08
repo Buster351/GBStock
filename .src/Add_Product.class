@@ -83,3 +83,9 @@ Public Function GetCategoryid(comb As ComboBox, text As String) As Integer
   
   
 End
+
+Public Sub Button5_Click()
+Desktop.Open("https://www.google.com/search?tbm = isch&q=connector")
+  'web.ShowModal
+
+End

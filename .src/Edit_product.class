@@ -18,14 +18,14 @@ Public Sub Form_Show()
   Print res
   Print cat
   Print brand
-  ComboBox1.Text = cat!item
+  If cat.Available Then ComboBox1.Text = cat!item
   'ComboBox2.Text = brand!item
   ComboBox2.Index = ComboBox2.List.Find(brand!item)
   
   TextBox1.Text = res!partnum
   TextArea1.Text = res!description
   TextBox2.Text = res!price
-  ValueBox1.Value = res!markup
+  If res!markup <> Null Then SliderBox1.Value = res!markup
   If res!image <> Null Then
     PictureBox1.Picture = Global.Scale_Picture(Global.Load_Picture_Blob(res!image), PictureBox1.Width, PictureBox1.Height, True)
   Endif
@@ -40,7 +40,12 @@ End
 
 Public Sub PictureBox1_DblClick()
 
-
+  'Dialog.Font = Font["Arial,43,Bold"]
+  Dialog.Filter = ["*.png;*.jpg;*.jpeg;*.bmp", "Picture files"]
+  Dialog.FilterIndex = 0
+  
+  Dialog.Path = User.Home & "/Pictures"
+  
   If Dialog.OpenFile() Then
     Return 
   Endif 
@@ -64,11 +69,18 @@ Public Sub Button2_Click()
   res!partnum = TextBox1.Text
   res!description = TextArea1.Text
   res!price = Val(TextBox2.Text)
-  res!markup = ValueBox1.Value
+  res!markup = SliderBox1.Value
   res!image = Global.LoadPictureFile(filename)
   res!date = Now
   res.Update
   Global.DBconn.Commit
   
   Me.Close
+End
+
+
+Public Sub Button5_Click()
+
+  Desktop.Open("https://www.google.com/search?tbm = isch&q=" & TextBox1.Text)
+
 End
