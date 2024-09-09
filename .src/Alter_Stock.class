@@ -26,7 +26,7 @@ res!max = SpinBox4.Value
 'res!reserve = ValueBox4.Value
 'res!part = TextBox3.Text
 'res!jobno = ValueBox5.Value
-res!locationid = Val(Location_Text.Text)
+res!location = Location_Text.Text
 'res!reorder_qty = SpinBox2.Value
 
 res!date = Now

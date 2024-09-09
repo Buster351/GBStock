@@ -1,13 +1,13 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,157,97)
+  MoveScaled(0,0,88,97)
   Text = ("Add Stock")
   Resizable = False
   Spacing = True
   Margin = True
   { HBox1 HBox
-    MoveScaled(93,90,62,4)
+    MoveScaled(25,91,62,4)
     Spacing = True
     { Panel1 Panel
       MoveScaled(4,0,4,4)
@@ -25,7 +25,7 @@
     }
   }
   { Panel2 Panel
-    MoveScaled(2,2,151,87)
+    MoveScaled(2,2,85,87)
     Border = Border.Sunken
     { Label1 Label
       MoveScaled(2,12,11,4)

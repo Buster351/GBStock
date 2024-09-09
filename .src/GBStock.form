@@ -151,10 +151,13 @@
   { Button9 Button
     MoveScaled(2,76,14,5)
     Font = Font["-3"]
-    Foreground = &HE0E0E0
+    Background = &HC0C0C0
+    Foreground = &H404040
     Text = ("Save stock as product")
   }
   { Button10 Button
     MoveScaled(2,84,14,5)
+    Background = &HE0E0E0
+    Foreground = &H202020
   }
 }

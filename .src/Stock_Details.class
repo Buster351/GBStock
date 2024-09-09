@@ -8,19 +8,26 @@ Public Sub Panel1_MouseDown()
 End
 
 Public Sub Form_Show()
-
-  Dim res As Result
-  res = Global.DBconn.Find("stock", "id = &1", GBStock.Selected_Stock)
-  Label1.Text = "Brand :- " & res!man
-  Label2.Text = "Discription :- " & res!descrip
-  Label3.Text = "Part No :- " & res!part
-  Label4.Text = "Stock :- " & res!amount
-  Label5.text = "Minimum Stock :- " & res!min
-  Label6.Text = "Maximum Stock :- " & res!max
-  Label7.Text = "Location :- " & res!locid
-  Label8.Text = "Type :- " & res!type
+  Dim stock As Result
+  Dim brand As Result
+  Dim type As Result
+  Dim product As Result
+  
+  stock = Global.DBconn.Find("stocks", "id = &1", GBStock.Selected_Stock)
+  product = Global.DBconn.Find("products", "id = &1", stock!productid)
+  brand = Global.DBconn.Find("brands", "id = &1", product!brand)
+  type = Global.DBconn.Find("types", "id = &1", product!category)
+  
+  Label1.Text = "Brand :- " & brand!item
+  Label2.Text = "Discription :- " & product!description
+  Label3.Text = "Part No :- " & product!partnum
+  'Label4.Text = "Stock :- " & res!amount
+  'Label5.text = "Minimum Stock :- " & res!min
+  'Label6.Text = "Maximum Stock :- " & res!max
+  'Label7.Text = "Location :- " & res!locid
+  'Label8.Text = "Type :- " & res!type
   ' ResVB.Value = Int(r!reserve)
-   PictureBox1.Picture = Global.Scale_Picture(Global.Load_picture(res!image), PictureBox1.Width, PictureBox1.Height, True)
+   PictureBox1.Picture = Global.Scale_Picture(Global.Load_picture(product!image), PictureBox1.Width, PictureBox1.Height, True)
 
 End
 

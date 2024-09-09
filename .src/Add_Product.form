@@ -1,7 +1,7 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,85,67)
+  MoveScaled(0,0,85,74)
   { TabPanel1 TabPanel
     MoveScaled(2,2,43,13)
     Index = 0
@@ -16,7 +16,7 @@
     Index = 0
   }
   { Button2 Button
-    MoveScaled(78,61,6,4)
+    MoveScaled(78,69,6,4)
     Text = ("OK")
   }
   { TabPanel2 TabPanel
@@ -56,6 +56,7 @@
     Text = ("Price")
     { TextBox2 TextBox
       MoveScaled(2,1,17,4)
+      Text = ("0")
     }
     Index = 0
   }
@@ -63,12 +64,9 @@
     MoveScaled(50,14,34,11)
     Index = 0
     Text = ("Markup")
-    { Slider1 Slider
-      MoveScaled(2,2,24,3)
-      Value = 20
-    }
-    { ValueBox1 ValueBox
-      MoveScaled(26,1,6,4)
+    { SliderBox1 SliderBox
+      MoveScaled(1,1,32,4)
+      Value = 40
     }
     Index = 0
   }
@@ -78,14 +76,24 @@
     Text = ("Image")
     { PictureBox1 PictureBox
       MoveScaled(1,2,31,25)
+      Picture = Picture.Load("missing-product.jpg")
     }
     Index = 0
   }
   { Button4 Button
-    MoveScaled(65,61,10,4)
+    MoveScaled(66,69,10,4)
     Text = ("Cancel")
   }
   { Button5 Button
     MoveScaled(46,36,3,6)
+  }
+  { TabPanel8 TabPanel
+    MoveScaled(2,61,44,12)
+    Index = 0
+    Text = ("Barcode")
+    { TextBox3 TextBox
+      MoveScaled(1,1,41,5)
+    }
+    Index = 0
   }
 }

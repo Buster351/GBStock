@@ -3,64 +3,88 @@
 Public amt As Integer
 
 Public Sub Form_Show()
-
-  Dim r As Result
-
-  r = Global.DBconn.Find("stock", "id = &1", GBStock.Selected_Stock)
-  FillComboBox(r!type)
-  ManTB.Text = r!man
-  DesTB.Text = r!descrip
-  TextBox3.Text = r!part
-  amt = Int(r!amount)
-  StockVB.Value = amt
-  MinVB.Value = Int(r!min)
-  MaxVB.Value = Int(r!max)
-  ResVB.Value = Int(r!reserve)
-  PictureBox1.Picture = Global.Scale_Picture(Global.Load_picture(r!image), PictureBox1.Width, PictureBox1.Height, True)
+  Dim stock As Result
+  Dim product As Result
+  Dim brand As Result
+  Dim type As Result
+  
+  'Global.LoadCatagories(TypeCB)
+  'Global.LoadBrands(BrandCB)
+  
+  stock = Global.DBconn.Find("stocks", "id = &1", GBStock.Selected_Stock)
+  product = Global.DBconn.Find("products", "id = &1", stock!productid)
+  type = Global.DBconn.Find("types", "id = &1", product!category)
+  brand = Global.DBconn.Find("brands", "id = &1", product!brand)
+  'FillComboBox(stock!type)
+  'If type.Available Then TypeCB.Index = TypeCB.List.Find(type!item)
+  'If brand.Available Then BrandCB.Index = BrandCB.List.Find(brand!item)
+  If type.Available Then Label1.Text = type!item
+  If brand.Available Then Label2.text = brand!item
+  Label4.text = product!description
+  Label7.Text = product!partnum
+  SpinBox1.Value = stock!amount
+  SpinBox2.Value = stock!min
+  SpinBox3.Value = stock!max
+    
+  'DesTB.Text = product!description
+  'TextBox3.Text = product!partnum
+  'StockVB.Value = stock!amount  
+  'MinVB.Value = stock!min
+  'MaxVB.Value = stock!max
+  'ResVB.Value = stock!reserve)
+  PictureBox1.Picture = Global.Scale_Picture(Global.Load_picture(product!image), PictureBox1.Width, PictureBox1.Height, True)
 End
 
-Public Sub FillComboBox(type As String)
-  Dim res As Result
-  res = Global.DBconn.Find("types")
-  TypeCB.Clear
-  For Each res
-    TypeCB.Add(res!type)
-  Next
-  TypeCB.Index = TypeCB.Find(type)
-End
+' Public Sub FillComboBox(type As String)
+'   Dim res As Result
+'   res = Global.DBconn.Find("types")
+'   TypeCB.Clear
+'   For Each res
+'     TypeCB.Add(res!type)
+'   Next
+'   TypeCB.Index = TypeCB.Find(type)
+' End
 
 
 
 Public Sub Button1_Click()
-
-  Update_Stock()
+  Dim stock As Result
+  
+  stock = Global.DBconn.Edit("stocks", "id = &1", Global.selected_stock_id)
+  stock!amount = SpinBox1.Value
+  stock!min = SpinBox2.Value
+  stock!max = SpinBox3.Value
+  stock.Update
+  Global.DBconn.Commit
+  
+  'Update_Stock()
   Me.Close
 
 End
 
-Public Sub Update_Stock()
-  
-  Dim res As Result
-  
-  res = Global.DBconn.Edit("stock", "id = &1", GBStock.Selected_Stock)
-  
-res!type = TypeCB.Current.Text
-res!man = ManTB.Text
-res!descrip = DesTB.Text
-res!amount = StockVB.Value
-res!min = MinVB.Value
-res!max = MaxVB.Value
-res!reserve = ResVB.Value
-res!jobno = ValueBox1.Value
-res!part = TextBox3.Text
-res!editdate = Now
-If PictureBox1.Picture <> Null Then
-  res!image = PictureBox1.Picture.ToString("png", 100)
-Endif
-
-res.Update
-Global.DBconn.Commit()
-End
+' Public Sub Update_Stock()
+'   
+'   Dim res As Result
+'   
+'   res = Global.DBconn.Edit("stock", "id = &1", GBStock.Selected_Stock)
+'   
+' res!type = TypeCB.Current.Text
+' 'res!man = ManTB.Text
+' res!descrip = DesTB.Text
+' res!amount = StockVB.Value
+' res!min = MinVB.Value
+' res!max = MaxVB.Value
+' res!reserve = ResVB.Value
+' res!jobno = ValueBox1.Value
+' res!part = TextBox3.Text
+' res!editdate = Now
+' If PictureBox1.Picture <> Null Then
+'   res!image = PictureBox1.Picture.ToString("png", 100)
+' Endif
+' 
+' res.Update
+' Global.DBconn.Commit()
+' End
 
 Public Sub Button2_Click()
 
@@ -68,10 +92,4 @@ Public Sub Button2_Click()
 
 End
 
-Public Sub FileChooser1_Activate()
 
-  Dim pic As Picture
-  pic = Picture.Load(FileChooser1.SelectedPath)
-  PictureBox1.Picture = Global.scale_Picture(pic, 260, 260, True)
-
-End

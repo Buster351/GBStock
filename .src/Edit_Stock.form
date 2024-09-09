@@ -3,95 +3,85 @@
 { Form Form
   MoveScaled(0,0,162,99)
   { Panel2 Panel
-    MoveScaled(0,0,159,88)
+    MoveScaled(1,1,159,88)
     Border = Border.Sunken
-    { Label1 Label
-      MoveScaled(3,4,11,4)
-      Text = ("Catecory")
+    { TabPanel1 TabPanel
+      MoveScaled(2,2,39,12)
+      Index = 0
+      Text = ("Category")
+      { Label1 Label
+        MoveScaled(1,2,35,4)
+        Text = ("Category")
+      }
+      Index = 0
     }
-    { Label2 Label
-      MoveScaled(3,9,11,4)
-      Text = ("Manufacturer")
+    { TabPanel2 TabPanel
+      MoveScaled(43,2,38,12)
+      Index = 0
+      Text = ("Brand")
+      { Label2 Label
+        MoveScaled(1,2,35,4)
+        Text = ("Manufacturer")
+      }
+      Index = 0
     }
-    { Label3 Label
-      MoveScaled(3,21,11,4)
-      Text = ("Amount")
-    }
-    { Label4 Label
-      MoveScaled(3,15,11,4)
+    { TabPanel3 TabPanel
+      MoveScaled(2,15,39,12)
+      Index = 0
       Text = ("Description")
+      { Label4 Label
+        MoveScaled(1,2,35,4)
+        Text = ("Description")
+      }
+      Index = 0
     }
-    { Label5 Label
-      MoveScaled(3,25,11,4)
-      Text = ("MIn Stock")
+    { TabPanel4 TabPanel
+      MoveScaled(43,15,38,12)
+      Index = 0
+      Text = ("Part Number")
+      { Label7 Label
+        MoveScaled(1,2,35,4)
+      }
+      Index = 0
     }
-    { Label6 Label
-      MoveScaled(27,26,11,4)
-      Text = ("Max Stock")
-    }
-    { Label7 Label
-      MoveScaled(3,30,11,4)
-      Text = ("Reserve")
-    }
-    { TypeCB ComboBox
-      MoveScaled(16,3,32,5)
-    }
-    { ManTB TextBox
-      MoveScaled(16,9,32,4)
-    }
-    { DesTB TextBox
-      MoveScaled(16,14,32,5)
-    }
-    { StockVB ValueBox
-      MoveScaled(16,21,9,4)
-    }
-    { MinVB ValueBox
-      MoveScaled(16,25,9,4)
-    }
-    { MaxVB ValueBox
-      MoveScaled(41,26,11,4)
-    }
-    { ResVB ValueBox
-      MoveScaled(16,30,9,4)
-    }
-    { PictureBox1 PictureBox
-      MoveScaled(3,47,46,37.1429)
-      Picture = Picture.Load("missing-product.jpg")
-      Stretch = True
-      Border = Border.Sunken
-    }
-    { FileChooser1 FileChooser
-      MoveScaled(88,2,68,84)
-      ShowFile = False
-      ReadOnly = True
-    }
-    { Label8 Label
-      MoveScaled(3,41,13,4)
+    { TabPanel5 TabPanel
+      MoveScaled(85,2,55,58)
+      Index = 0
       Text = ("Image")
-    }
-    { Label9 Label
-      MoveScaled(27,30,13,4)
-      Text = ("Job No.")
-    }
-    { ValueBox1 ValueBox
-      MoveScaled(41,30,11,4)
-    }
-    { Label10 Label
-      MoveScaled(3,35,15,6)
-      Text = ("Stock On Order")
-    }
-    { ValueBox2 ValueBox
-      MoveScaled(18,36,20,4)
-    }
-    { Panel7 Panel
-      MoveScaled(40,34,45,8)
-      { Label11 Label
-        MoveScaled(1,2,7,3)
-        Text = ("Part No.")
+      { PictureBox1 PictureBox
+        MoveScaled(0,0,54,52)
+        Picture = Picture.Load("missing-product.jpg")
+        Stretch = True
+        Border = Border.Sunken
       }
-      { TextBox3 TextBox
-        MoveScaled(13,2,31,4)
+      Index = 0
+    }
+    { TabPanel6 TabPanel
+      MoveScaled(2,31,22.8571,12)
+      Index = 0
+      Text = ("Current Stock")
+      { SpinBox1 SpinBox
+        MoveScaled(1,1,20.7143,5)
       }
+      Index = 0
+    }
+    { TabPanel7 TabPanel
+      MoveScaled(29,31,23,12)
+      Index = 0
+      Text = ("Min Stock")
+      { SpinBox2 SpinBox
+        MoveScaled(1,1,20.7143,5)
+      }
+      Index = 0
+    }
+    { TabPanel8 TabPanel
+      MoveScaled(54,31,22.8571,12)
+      Index = 0
+      Text = ("Max Stock")
+      { SpinBox3 SpinBox
+        MoveScaled(1,1,20.7143,5)
+      }
+      Index = 0
     }
   }
   { Panel1 Panel

@@ -6,6 +6,7 @@ Public DateCF As Date
 Public DBconn As New Connection
 Public IgnoreEvents As Boolean = False
 Public selected_product_id As Integer
+Public selected_stock_id As Integer
 
 
 Public Sub Connect_database()

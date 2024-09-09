@@ -2,6 +2,7 @@
 
 
 Public Selected_Stock As Integer
+
 Public Action_req As Boolean = False
 Public snd As Sound
 
@@ -14,31 +15,41 @@ End
 
 
 Public Sub SetUpGrid()
-GridView1.Columns.Count = 9
-GridView1.Columns[0].Alignment = Align.Justify
-GridView1.Columns[0].Title = "id"
 
 With GridView1
-  .Columns[1].Title = "Image"
-  .Columns[1].Width = 150
+  .Columns.Count = 6
+
+  .Columns[0].Alignment = Align.Justify
+  .Columns[0].Title = "id"
+  .Columns[0].Width = 20
+
+
+  .Columns[1].Title = "Image/Part Number"
+  .Columns[1].Width = 250
   .Columns[1].Alignment = Align.Center
   
   .Columns[2].Width = 400
   .Columns[2].Alignment = Align.Center
   .Columns[2].Title = "Description"
-  .Columns[3].width = 200
-  .Columns[3].Title = "Part Number"
+  
+  .Columns[3].width = 100
+  .Columns[3].Title = "Quantity"
   .Columns[3].Alignment = Align.Center
-  .Columns[4].Title = "Reserved Stock"
+  
+  .Columns[4].Width = 100
+  .Columns[4].Title = "Minimum"
   .Columns[4].Alignment = Align.Center
-  .Columns[5].Title = "Stock with reserve"
+  
+  .Columns[5].Width = 100
+  .Columns[5].Title = "Location"
   .Columns[5].Alignment = Align.Center
-  .Columns[6].Title = "Min Stock"
-  .Columns[6].Alignment = Align.Center
-  .Columns[7].Title = "Location"
-  .Columns[7].Alignment = Align.Center
-  .Columns[8].Title = "Part Number"
-  .Columns[8].Alignment = Align.Center
+  
+  ' .Columns[6].Title = "Min Stock"
+  ' .Columns[6].Alignment = Align.Center
+  ' .Columns[7].Title = "Location"
+  ' .Columns[7].Alignment = Align.Center
+  ' .Columns[8].Title = "Part Number"
+  ' .Columns[8].Alignment = Align.Center
 'GridView1[0, 0].Text = "0,0"
 'GridView1[0, 0].Alignment = Align.Center
 End With 
@@ -50,54 +61,56 @@ Public Sub UpdateGrid(res As Result)
   Dim amt As Integer
   Dim part_no As String
   
+  Print "This function is no longer valid UpdateGrid(result)"
   
    GridView1.Clear
    GridView1.Rows.Count = res.Count
-   Action_req = False
-    
-    For Each res
-      reserve = Int(res!reserve)
-      amt = Int(res!amount)
-      current_stock = amt - reserve
-      
-      GridView1[res.Index, 0].Text = res!id
-      
-      GridView1[res.Index, 8].RichText = Global.ToRichtext(res!part, 1)
-            
-      'GridView1[res.Index, 1].Text = res!type
-      
-      If current_stock < 0 Then
-        GridView1[res.Index, 3].Foreground = Color.Purple
-        Action_req = True
-      Endif
-      
-      
-      GridView1[res.Index, 3].RichText = Global.ToRichtext(amt, 3)
-      
-      If Int(res!amount) < Int(res!min) Then
-        GridView1[res.Index, 6].Foreground = Color.Red
-        Action_req = True
-      ' Else 
-      '   Action_req = False
-      Endif
-      
-      GridView1[res.Index, 7].text = res!locid
-      
-      GridView1[res.Index, 6].RichText = Global.ToRichtext(res!min, 1)
-      If Int(res!reserve) > 0 Then
-        GridView1[res.Index, 4].Foreground = Color.Yellow
-      Endif
-      GridView1[res.Index, 4].RichText = Global.ToRichtext(res!reserve, 1)
-      If current_stock < 0 Then
-        GridView1[res.Index, 5].Foreground = Color.Black
-        GridView1[res.Index, 5].Background = Color.Cyan
-      Endif
-      GridView1[res.Index, 5].RichText = Global.ToRichtext(current_stock, 1) 'current_stock"
-      If res!image.Length <> 0 Then
-        GridView1.Rows[res.Index].Height = 100
-        GridView1[res.Index, 1].Picture = Global.Scale_Picture(Global.Get_Picture(res!image), 100, 100, True)
-      Endif
-    Next
+   '************** FIX ME *****************************
+   ' Action_req = False
+   '  
+   '  For Each res
+   '    reserve = Int(res!reserve)
+   '    amt = Int(res!amount)
+   '    current_stock = amt - reserve
+   '    
+   '    GridView1[res.Index, 0].Text = res!id
+   '    
+   '    GridView1[res.Index, 8].RichText = Global.ToRichtext(res!part, 1)
+   '          
+   '    'GridView1[res.Index, 1].Text = res!type
+   '    
+   '    If current_stock < 0 Then
+   '      GridView1[res.Index, 3].Foreground = Color.Purple
+   '      Action_req = True
+   '    Endif
+   '    
+   '    
+   '    GridView1[res.Index, 3].RichText = Global.ToRichtext(amt, 3)
+   '    
+   '    If Int(res!amount) < Int(res!min) Then
+   '      GridView1[res.Index, 6].Foreground = Color.Red
+   '      Action_req = True
+   '    ' Else 
+   '    '   Action_req = False
+   '    Endif
+   '    
+   '    GridView1[res.Index, 7].text = res!locid
+   '    
+   '    GridView1[res.Index, 6].RichText = Global.ToRichtext(res!min, 1)
+   '    If Int(res!reserve) > 0 Then
+   '      GridView1[res.Index, 4].Foreground = Color.Yellow
+   '    Endif
+   '    GridView1[res.Index, 4].RichText = Global.ToRichtext(res!reserve, 1)
+   '    If current_stock < 0 Then
+   '      GridView1[res.Index, 5].Foreground = Color.Black
+   '      GridView1[res.Index, 5].Background = Color.Cyan
+   '    Endif
+   '    GridView1[res.Index, 5].RichText = Global.ToRichtext(current_stock, 1) 'current_stock"
+   '    If res!image.Length <> 0 Then
+   '      GridView1.Rows[res.Index].Height = 100
+   '      GridView1[res.Index, 1].Picture = Global.Scale_Picture(Global.Get_Picture(res!image), 100, 100, True)
+   '    Endif
+   '  Next
 End
 
 Public Sub Button1_Click()
@@ -137,23 +150,21 @@ End
 Public Sub GridView1_Select()
 
 
-  Button2.Enabled = True
+  Button2.Enabled = True 'edit stock button not working keep false
   Button5.Enabled = True
   Button6.Enabled = True
   Selected_Stock = Val(GridView1[GridView1.Row, 0].Text)
+  global.selected_stock_id = Selected_Stock
   'Print Selected_Stock
   
 End
 
 Public Sub Button2_Click()
 Dim r As Result
-  Global.IsEdit = True
-  
-  Alter_Stock.ShowModal()
+  Edit_Stock.ShowModal
   
   Button2.Enabled = False
-  r = Global.DBconn.Find("stock")
-  UpdateGrid(r)
+  ShowStock()
 
 End
 
@@ -229,7 +240,7 @@ t = ComboBox1.Current.Text
   Else 
   r = Global.DBconn.Find("stock", "type = &1", t)
   Endif 
-  UpdateGrid(r)
+  UpdateGrid(r) ' Not working
   
 
 End
@@ -346,7 +357,7 @@ End
 Public Sub Button8_Click()
 
   Add_Product.ShowModal
-  
+  ShowStock()
 
 End
 
@@ -404,9 +415,11 @@ Public Sub ShowStock()
         GridView1.Rows[res.Index].Height = 100
         GridView1[res.Index, 1].Picture = Global.Scale_Picture(Global.Get_Picture(product!image), 100, 100, True)
       Endif
-    GridView1[res.Index, 2].Text = product!description
-    GridView1[res.Index, 3].Text = product!partnum
-  Next
-  
+     GridView1[res.Index, 1].Text = product!partnum
+     GridView1[res.Index, 2].Text = product!description
+     GridView1[res.Index, 3].Text = res!amount
+     GridView1[res.Index, 4].Text = res!min
+     GridView1[res.index, 5].Text = res!location
+  Next 
   
 End

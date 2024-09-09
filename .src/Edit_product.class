@@ -20,11 +20,13 @@ Public Sub Form_Show()
   Print brand
   If cat.Available Then ComboBox1.Text = cat!item
   'ComboBox2.Text = brand!item
-  ComboBox2.Index = ComboBox2.List.Find(brand!item)
+  If brand.Available Then ComboBox2.Index = ComboBox2.List.Find(brand!item)
   
   TextBox1.Text = res!partnum
   TextArea1.Text = res!description
   TextBox2.Text = res!price
+  TextBox3.text = res!barcode
+  
   If res!markup <> Null Then SliderBox1.Value = res!markup
   If res!image <> Null Then
     PictureBox1.Picture = Global.Scale_Picture(Global.Load_Picture_Blob(res!image), PictureBox1.Width, PictureBox1.Height, True)
@@ -70,6 +72,7 @@ Public Sub Button2_Click()
   res!description = TextArea1.Text
   res!price = Val(TextBox2.Text)
   res!markup = SliderBox1.Value
+  res!barcode = TextBox3.Text
   res!image = Global.LoadPictureFile(filename)
   res!date = Now
   res.Update

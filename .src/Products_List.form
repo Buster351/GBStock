@@ -1,13 +1,13 @@
 # Gambas Form File 3.0
 
 { Form Form
-  MoveScaled(0,0,113,121)
+  MoveScaled(0,0,148,121)
   { TabPanel1 TabPanel
-    MoveScaled(1,2,109,113)
+    MoveScaled(1,2,145,113)
     Index = 0
     Text = ("Products")
     { GridView1 GridView
-      MoveScaled(1,7,107,100)
+      MoveScaled(1,7,142,100)
       Mode = Select.Single
       Header = GridView.Horizontal
     }
@@ -36,11 +36,11 @@
     Index = 0
   }
   { Button1 Button
-    MoveScaled(102,116,8,4)
+    MoveScaled(138,116,8,4)
     Text = ("Ok")
   }
   { Button3 Button
-    MoveScaled(89,116,11,4)
+    MoveScaled(125,116,11,4)
     Text = ("Cancel")
   }
 }
