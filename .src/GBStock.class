@@ -61,7 +61,7 @@ Public Sub UpdateGrid(res As Result)
   Dim amt As Integer
   Dim part_no As String
   
-  Print "This function is no longer valid UpdateGrid(result)"
+  Debug "This function is no longer valid UpdateGrid(result)"
   
    GridView1.Clear
    GridView1.Rows.Count = res.Count
@@ -132,19 +132,21 @@ Me.Text = "GBStock " & Application.Version
 'connect to database so we can access it
 Global.Connect_database()
 
-Global.FillCombo(ComboBox1, "types") ' fix this to use the global vertion
-Global.FillCombo(Brand_Combo, "brands")
+
+
 
 snd = Sound.Load(Application.Path & "/" & "warning.mp3")
 
 
-r = Global.DBconn.Find("stock")
+'r = Global.DBconn.Find("stock")
 'setup grid after getting stock so we know how many rows there are
 SetUpGrid()
 ' fill the grid  
 'UpdateGrid(r)
-ShowStock()
-
+r = Global.DBconn.Find("stocks")
+ShowStock(r)
+Global.FillCombo(ComboBox1, "types") ' fix this to use the global vertion
+Global.FillCombo(Brand_Combo, "brands")
 End
 
 Public Sub GridView1_Select()
@@ -203,16 +205,26 @@ Public Sub FillComboBox()
 End
 
 Public Sub ComboBox1_Change()
-' Dim r As Result
-' Dim t As String
-' 
-' t = ComboBox1.Current.Text
-'   If t = "All" Then
-'     r = Global.DBconn.Find("stock")
-'   Else 
-'   r = Global.DBconn.Find("stock", "type = &1", t)
-'   Endif 
-'   UpdateGrid(r)
+   Dim product As Result
+   Dim type As Result
+   Dim stock As Result
+   Dim t As String
+' ' 
+  t = ComboBox1.Current.Text
+  If t = "All" Then
+    stock = Global.DBconn.Find("stocks")
+  Else 
+    type = global.DBconn.Find("types", "item = &1", t)
+    product = Global.DBconn.Find("products", "category = &1", type!id)
+    stock = Global.DBconn.Find("stocks", "productid = &1", product!id)
+  Endif 
+'   Select stocks. *
+' From stocks
+' JOIN products On stocks.productid = products.id
+' WHERE products.category = 5;
+' '   UpdateGrid(r)
+'   res = Global.DBconn.Find("stocks")
+   ShowStock(stock)
 
 End
 
@@ -230,18 +242,19 @@ Public Sub Button4_Click()
 End
 
 Public Sub ComboBox1_Click()
-Dim r As Result
-Dim t As String
-If Global.IgnoreEvents Then Return 
-
-t = ComboBox1.Current.Text
-  If t = "All" Then
-    r = Global.DBconn.Find("stock")
-  Else 
-  r = Global.DBconn.Find("stock", "type = &1", t)
-  Endif 
-  UpdateGrid(r) ' Not working
-  
+ Dim res As Result
+' Dim t As String
+' If Global.IgnoreEvents Then Return 
+' 
+' t = ComboBox1.Current.Text
+'   If t = "All" Then
+'     r = Global.DBconn.Find("stock")
+'   Else 
+'   r = Global.DBconn.Find("stock", "type = &1", t)
+'   Endif 
+'   UpdateGrid(r) ' Not working
+   res = Global.DBconn.Find("stocks")
+   ShowStock(res)
 
 End
 
@@ -261,17 +274,7 @@ Public Sub Brand_Combo_Change()
 End
 
 Public Sub Brand_Combo_Click()
-Dim r As Result
-Dim t As String
-If Global.IgnoreEvents Then Return 
 
-t = Brand_Combo.Current.Text
-  If t = "All" Then
-    r = Global.DBconn.Find("brands")
-  Else 
-  r = Global.DBconn.Find("stock", "man = &1", t)
-  Endif 
-  UpdateGrid(r)
 End
 
 Public Sub Button5_Click()
@@ -402,11 +405,11 @@ Public Sub Button9_Click()
   
 End
 
-Public Sub ShowStock()
-  Dim res As Result
+Public Sub ShowStock(res As Result)
+  'Dim res As Result
   Dim product As Result
   
-  res = Global.DBconn.Find("stocks")
+  ' res = Global.DBconn.Find("stocks")
   GridView1.Rows.Count = res.Count  
   For Each res
     GridView1[res.Index, 0].text = res!id
