@@ -83,6 +83,15 @@
       }
       Index = 0
     }
+    { TabPanel9 TabPanel
+      MoveScaled(2,46,80,12)
+      Index = 0
+      Text = ("Location")
+      { TextBox1 TextBox
+        MoveScaled(1,1,33,5)
+      }
+      Index = 0
+    }
   }
   { Panel1 Panel
     MoveScaled(124,90,35,7)

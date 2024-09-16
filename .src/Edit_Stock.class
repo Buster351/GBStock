@@ -25,7 +25,8 @@ Public Sub Form_Show()
   SpinBox1.Value = stock!amount
   SpinBox2.Value = stock!min
   SpinBox3.Value = stock!max
-    
+  TextBox1.Text = Stock!location
+   
   'DesTB.Text = product!description
   'TextBox3.Text = product!partnum
   'StockVB.Value = stock!amount  
@@ -54,6 +55,7 @@ Public Sub Button1_Click()
   stock!amount = SpinBox1.Value
   stock!min = SpinBox2.Value
   stock!max = SpinBox3.Value
+  Stock!location = TextBox1.Text
   stock.Update
   Global.DBconn.Commit
   
