@@ -17,7 +17,7 @@ End
 Public Sub SetUpGrid()
 
 With GridView1
-  .Columns.Count = 6
+  .Columns.Count = 7
 
   .Columns[0].Alignment = Align.Justify
   .Columns[0].Title = "id"
@@ -40,13 +40,14 @@ With GridView1
   .Columns[4].Title = "Minimum"
   .Columns[4].Alignment = Align.Center
   
-  .Columns[5].Width = 100
+  .Columns[5].Width = 150
   .Columns[5].Title = "Location"
   .Columns[5].Alignment = Align.Center
   
-  ' .Columns[6].Title = "Min Stock"
-  ' .Columns[6].Alignment = Align.Center
-  ' .Columns[7].Title = "Location"
+  .Columns[6].Width = 100
+  .Columns[6].Title = "Min Stock"
+  .Columns[6].Alignment = Align.Center
+  '.Columns[7].Title = "Location"
   ' .Columns[7].Alignment = Align.Center
   ' .Columns[8].Title = "Part Number"
   ' .Columns[8].Alignment = Align.Center
@@ -117,7 +118,7 @@ Public Sub Button1_Click()
 Dim r As Result
   Global.IsEdit = False
   Alter_Stock.ShowModal
-  ShowStock()
+  Show_All_Stock
   'r = Global.DBconn.Find("stock")
   'Global.FillCombo(ComboBox1, "types") ' update in case they where changed
   'Global.FillCombo(Brand_Combo, "brands")
@@ -166,7 +167,7 @@ Dim r As Result
   Edit_Stock.ShowModal
   
   Button2.Enabled = False
-  ShowStock()
+ Show_All_Stock
 
 End
 
@@ -269,7 +270,7 @@ Dim product As Result
    Dim t As String
    Dim query As String
     
-  t = ComboBox1.Current.Text
+  t = Brand_Combo.Current.Text
   If t = "All" Then
     stock = Global.DBconn.Find("stocks")
   Else 
@@ -277,15 +278,10 @@ Dim product As Result
     'product = Global.DBconn.Find("products", "category = &1", type!id)
     Print type!id
    'stock = Global.DBconn.Find("stocks", "productid = &1", product!id)
-   query = "Select * From stocks JOIN products On stocks.productid = products.id WHERE products.category = &1;"
+   query = "Select * From stocks JOIN products On stocks.productid = products.id WHERE products.brand = &1;"
    stock = global.DBconn.Exec(query, type!id) 
   Endif 
-'   Select stocks. *
-' From stocks
-' JOIN products On stocks.productid = products.id
-' WHERE products.category = 5;
-' '   UpdateGrid(r)
-'   res = Global.DBconn.Find("stocks")
+
    ShowStock(stock)
 
 End
@@ -308,11 +304,30 @@ Public Sub TextBox1_KeyPress()
 End
 
 Public Sub TextBox1_Change()
-Dim res As Result
-  If Len(TextBox1.Text) >= 3 Then
-    res = Global.SearchFor(TextBox1.Text, "stock")
-    UpdateGrid(res)
-  Endif
+Dim product As Result
+   Dim type As Result
+   Dim stock As Result
+   Dim t As String
+   Dim query As String
+    
+  t = TextBox1.Text
+  If t = "All" Then
+    stock = Global.DBconn.Find("stocks")
+  Else 
+    'type = global.DBconn.Find("types", "item = &1", t)
+    'product = Global.DBconn.Find("products", "category = &1", type!id)
+    Print type!id
+   'stock = Global.DBconn.Find("stocks", "productid = &1", product!id)
+   query = "Select * From stocks JOIN products On stocks.productid = products.id WHERE products.category = &1;"
+   stock = global.DBconn.Exec(query, type!id) 
+  Endif 
+'   Select stocks. *
+' From stocks
+' JOIN products On stocks.productid = products.id
+' WHERE products.category = 5;
+' '   UpdateGrid(r)
+'   res = Global.DBconn.Find("stocks")
+   ShowStock(stock)
 
 
 End
@@ -428,6 +443,30 @@ Public Sub ShowStock(res As Result)
   
   ' res = Global.DBconn.Find("stocks")
   GridView1.Clear
+  GridView1.Rows.Count = res.Count  
+  For Each res
+    GridView1[res.Index, 0].text = res!id
+    product = global.DBconn.Find("products", "id = &1", res!productid)
+    If product!image.Length <> 0 Then
+        GridView1.Rows[res.Index].Height = 100
+        GridView1[res.Index, 1].Picture = Global.Scale_Picture(Global.Get_Picture(product!image), 100, 100, True)
+      Endif
+     GridView1[res.Index, 1].Text = product!partnum
+     GridView1[res.Index, 2].Text = product!description
+     GridView1[res.Index, 3].Text = res!amount
+     GridView1[res.Index, 4].Text = res!min
+     GridView1[res.index, 5].Text = res!location
+  Next 
+  
+End
+
+Public Sub Show_All_Stock()
+  Dim res As Result
+  Dim product As Result
+  
+  ' res = Global.DBconn.Find("stocks")
+  GridView1.Clear
+  res = global.DBconn.Find("stocks")
   GridView1.Rows.Count = res.Count  
   For Each res
     GridView1[res.Index, 0].text = res!id
